@@ -33,5 +33,6 @@ public class DataGenerators {
 		AABlockTagsProvider blockTags = new AABlockTagsProvider(output, lookupProvider, helper);
 		generator.addProvider(event.includeServer(), blockTags);
 		generator.addProvider(event.includeServer(), new AAItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), helper));
+		generator.addProvider(event.includeServer(), new AARecipeProvider(output, lookupProvider));
 	}
 }

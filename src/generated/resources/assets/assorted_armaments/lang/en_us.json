@@ -1,3 +1,13 @@
 {
-  "item.assorted_armaments.wooden_claymore": "Wooden Claymore"
+  "desc.assorted_armaments.claymore1": "Can be used to block melee damage that is equal to half of the weapon's damage",
+  "desc.assorted_armaments.claymore2": "On a sweeping attack, all targets in range take 100% damage",
+  "desc.assorted_armaments.claymore3": "Disables offhand items when held in main hand",
+  "desc.assorted_armaments.shift": "Hold [SHIFT] for more information",
+  "item.assorted_armaments.diamond_claymore": "Diamond Claymore",
+  "item.assorted_armaments.golden_claymore": "Golden Claymore",
+  "item.assorted_armaments.iron_claymore": "Iron Claymore",
+  "item.assorted_armaments.netherite_claymore": "Netherite Claymore",
+  "item.assorted_armaments.stone_claymore": "Stone Claymore",
+  "item.assorted_armaments.wooden_claymore": "Wooden Claymore",
+  "name.assorted_armaments": "Assorted Armaments"
 }

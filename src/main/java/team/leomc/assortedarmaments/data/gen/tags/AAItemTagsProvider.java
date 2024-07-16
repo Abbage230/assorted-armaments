@@ -20,7 +20,12 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.Provider lookupProvider) {
 		tag(AAItemTags.CLAYMORES).add(
-			AAItems.WOODEN_CLAYMORE.get()
+			AAItems.WOODEN_CLAYMORE.get(),
+			AAItems.STONE_CLAYMORE.get(),
+			AAItems.IRON_CLAYMORE.get(),
+			AAItems.DIAMOND_CLAYMORE.get(),
+			AAItems.GOLDEN_CLAYMORE.get(),
+			AAItems.NETHERITE_CLAYMORE.get()
 		);
 		tag(ItemTags.SWORDS).addTags(AAItemTags.CLAYMORES);
 	}

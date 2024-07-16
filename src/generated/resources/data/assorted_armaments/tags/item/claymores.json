@@ -1,5 +1,10 @@
 {
   "values": [
-    "assorted_armaments:wooden_claymore"
+    "assorted_armaments:wooden_claymore",
+    "assorted_armaments:stone_claymore",
+    "assorted_armaments:iron_claymore",
+    "assorted_armaments:diamond_claymore",
+    "assorted_armaments:golden_claymore",
+    "assorted_armaments:netherite_claymore"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "assorted_armaments:item/golden_claymore_inventory"
+  }
+}

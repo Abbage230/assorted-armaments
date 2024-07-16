@@ -19,8 +19,26 @@ public class AAItemModelProvider extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-		largeHandheld(AAItems.WOODEN_CLAYMORE.get());
+		claymore(AAItems.WOODEN_CLAYMORE.get());
 		inventoryModel(AAItems.WOODEN_CLAYMORE.get());
+		claymore(AAItems.STONE_CLAYMORE.get());
+		inventoryModel(AAItems.STONE_CLAYMORE.get());
+		claymore(AAItems.IRON_CLAYMORE.get());
+		inventoryModel(AAItems.IRON_CLAYMORE.get());
+		claymore(AAItems.DIAMOND_CLAYMORE.get());
+		inventoryModel(AAItems.DIAMOND_CLAYMORE.get());
+		claymore(AAItems.GOLDEN_CLAYMORE.get());
+		inventoryModel(AAItems.GOLDEN_CLAYMORE.get());
+		claymore(AAItems.NETHERITE_CLAYMORE.get());
+		inventoryModel(AAItems.NETHERITE_CLAYMORE.get());
+	}
+
+	private void claymore(Item item) {
+		ModelFile blocking = withExistingParent(name(item) + "_blocking", AssortedArmaments.strId("item/large_handheld_blocking"))
+			.texture("layer0", itemTexture(item));
+		withExistingParent(name(item), AssortedArmaments.strId("item/large_handheld"))
+			.texture("layer0", itemTexture(item))
+			.override().predicate(AssortedArmaments.id("blocking"), 1).model(blocking).end();
 	}
 
 	private ItemModelBuilder largeHandheld(Item item) {
@@ -54,5 +72,9 @@ public class AAItemModelProvider extends ItemModelProvider {
 
 	private ResourceLocation key(Item item) {
 		return BuiltInRegistries.ITEM.getKey(item);
+	}
+
+	private String name(Item item) {
+		return key(item).getPath();
 	}
 }

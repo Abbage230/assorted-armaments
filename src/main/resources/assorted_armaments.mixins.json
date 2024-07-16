@@ -5,9 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "bcs_expedition_world.refmap.json",
   "mixins": [
+    "ItemStackMixin",
     "PlayerMixin"
   ],
   "client": [
+    "ItemInHandLayerMixin",
+    "ItemInHandRendererMixin",
+    "LocalPlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

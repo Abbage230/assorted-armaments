@@ -16,12 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import team.leomc.assortedarmaments.tags.AAItemTags;
 
-import javax.annotation.Nonnull;
-
 @Mixin(Player.class)
 public abstract class PlayerMixin {
 	@Shadow
-	@Nonnull
 	public abstract ItemStack getWeaponItem();
 
 	@Unique
