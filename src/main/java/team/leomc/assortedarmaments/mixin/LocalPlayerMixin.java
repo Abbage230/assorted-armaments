@@ -23,7 +23,7 @@ public abstract class LocalPlayerMixin {
 
 	@Inject(method = "aiStep", at = @At(value = "FIELD", target = "Lnet/minecraft/client/player/LocalPlayer;sprintTriggerTime:I", ordinal = 3, shift = At.Shift.BEFORE))
 	private void modifyClaymoreWalkSpeed(CallbackInfo ci) {
-		if (isUsingItem() && ((Player) (Object) this).getUseItem().is(AAItemTags.CLAYMORES)) {
+		if (isUsingItem() && ((Player) (Object) this).getUseItem().is(AAItemTags.CAN_BLOCK)) {
 			input.forwardImpulse *= 5;
 			input.leftImpulse *= 5;
 		}

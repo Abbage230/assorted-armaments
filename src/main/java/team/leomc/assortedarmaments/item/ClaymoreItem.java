@@ -16,7 +16,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import team.leomc.assortedarmaments.AACommonConfig;
 import team.leomc.assortedarmaments.AssortedArmaments;
 
 import java.util.List;
@@ -32,10 +31,6 @@ public class ClaymoreItem extends SwordItem {
 			.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, attackSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
 			.add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(AssortedArmaments.id("base_interaction_range"), interactionRange, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
 			.build();
-	}
-
-	public static AttributeModifier getBlockSpeedModifier() {
-		return new AttributeModifier(AssortedArmaments.id("claymore_block_speed"), -AACommonConfig.claymoreBlockWalkSpeedModifier, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 	}
 
 	@Override

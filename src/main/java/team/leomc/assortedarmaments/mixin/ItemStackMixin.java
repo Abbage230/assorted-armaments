@@ -17,14 +17,14 @@ import team.leomc.assortedarmaments.tags.AAItemTags;
 public abstract class ItemStackMixin {
 	@Inject(method = "use", at = @At("HEAD"), cancellable = true)
 	private void use(Level level, Player player, InteractionHand usedHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
-		if (player.getMainHandItem().is(AAItemTags.CLAYMORES) && usedHand == InteractionHand.OFF_HAND) {
+		if (player.getMainHandItem().is(AAItemTags.TWO_HANDED) && usedHand == InteractionHand.OFF_HAND) {
 			cir.setReturnValue(InteractionResultHolder.pass(player.getOffhandItem()));
 		}
 	}
 
 	@Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
 	private void useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
-		if (context.getPlayer() != null && context.getPlayer().getMainHandItem().is(AAItemTags.CLAYMORES) && context.getHand() == InteractionHand.OFF_HAND) {
+		if (context.getPlayer() != null && context.getPlayer().getMainHandItem().is(AAItemTags.TWO_HANDED) && context.getHand() == InteractionHand.OFF_HAND) {
 			cir.setReturnValue(InteractionResult.PASS);
 		}
 	}

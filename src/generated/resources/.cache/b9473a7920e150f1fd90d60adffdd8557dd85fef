@@ -1,3 +1,6 @@
-// 1.21	2024-07-16T14:37:17.2183249	Tags for minecraft:item mod id assorted_armaments
+// 1.21	2024-07-16T16:07:37.0090101	Tags for minecraft:item mod id assorted_armaments
+d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/can_block.json
 f24a559480a18b444e7f297e1003e8167bc0f39a data/assorted_armaments/tags/item/claymores.json
+d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/efficient_sweep.json
+d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/two_handed.json
 d500bd43e88c70df0ec4054b266d05b7df7e221e data/minecraft/tags/item/swords.json

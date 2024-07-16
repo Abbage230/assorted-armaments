@@ -9,16 +9,16 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class AACommonConfig {
 	private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-	private static final ModConfigSpec.DoubleValue CLAYMORE_BLOCK_WALK_SPEED_MODIFIER = BUILDER
-		.comment("Player's walk speed when blocking using a claymore = (1 - claymoreBlockWalkSpeedModifier) * originalSpeed")
-		.defineInRange("claymoreBlockWalkSpeedModifier", 0.25, 0, 1);
+	private static final ModConfigSpec.DoubleValue WEAPON_BLOCK_WALK_SPEED_MODIFIER = BUILDER
+		.comment("Player's walk speed when blocking with a weapon = (1 - weaponBlockWalkSpeedModifier) * originalSpeed")
+		.defineInRange("weaponBlockWalkSpeedModifier", 0.25, 0, 1);
 
 	public static final ModConfigSpec SPEC = BUILDER.build();
 
-	public static double claymoreBlockWalkSpeedModifier;
+	public static double weaponBlockWalkSpeedModifier;
 
 	@SubscribeEvent
 	private static void onLoad(final ModConfigEvent event) {
-		claymoreBlockWalkSpeedModifier = CLAYMORE_BLOCK_WALK_SPEED_MODIFIER.get();
+		weaponBlockWalkSpeedModifier = WEAPON_BLOCK_WALK_SPEED_MODIFIER.get();
 	}
 }

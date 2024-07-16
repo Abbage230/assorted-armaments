@@ -20,7 +20,7 @@ import team.leomc.assortedarmaments.tags.AAItemTags;
 public abstract class ItemInHandLayerMixin {
 	@Inject(method = "renderArmWithItem", at = @At("HEAD"), cancellable = true)
 	private void renderArmWithItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
-		if (livingEntity.getMainHandItem().is(AAItemTags.CLAYMORES) && arm != livingEntity.getMainArm()) {
+		if (livingEntity.getMainHandItem().is(AAItemTags.TWO_HANDED) && arm != livingEntity.getMainArm()) {
 			ci.cancel();
 		}
 	}

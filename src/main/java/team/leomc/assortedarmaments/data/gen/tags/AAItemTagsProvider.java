@@ -27,6 +27,9 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 			AAItems.GOLDEN_CLAYMORE.get(),
 			AAItems.NETHERITE_CLAYMORE.get()
 		);
-		tag(ItemTags.SWORDS).addTags(AAItemTags.CLAYMORES);
+		tag(AAItemTags.TWO_HANDED).addTag(AAItemTags.CLAYMORES);
+		tag(AAItemTags.CAN_BLOCK).addTag(AAItemTags.CLAYMORES);
+		tag(AAItemTags.EFFICIENT_SWEEP).addTag(AAItemTags.CLAYMORES);
+		tag(ItemTags.SWORDS).addTag(AAItemTags.CLAYMORES);
 	}
 }

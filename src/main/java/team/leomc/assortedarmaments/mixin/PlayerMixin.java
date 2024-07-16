@@ -2,6 +2,7 @@ package team.leomc.assortedarmaments.mixin;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
@@ -31,8 +32,8 @@ public abstract class PlayerMixin {
 
 	@ModifyArg(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getEnchantedDamage(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;)F", ordinal = 1), index = 1)
 	private float modifySweepDamage(float damage) {
-		if (getWeaponItem().is(AAItemTags.CLAYMORES)) {
-			return aa$originalAttackDamage;
+		if (getWeaponItem().is(AAItemTags.EFFICIENT_SWEEP)) {
+			return (float) (aa$originalAttackDamage * (1 + ((Player) (Object) this).getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO) * 0.1));
 		}
 		return damage;
 	}

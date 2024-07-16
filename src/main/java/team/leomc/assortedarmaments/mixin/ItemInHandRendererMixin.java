@@ -15,7 +15,7 @@ import team.leomc.assortedarmaments.tags.AAItemTags;
 public abstract class ItemInHandRendererMixin {
 	@Inject(method = "evaluateWhichHandsToRender", at = @At("RETURN"), cancellable = true)
 	private static void evaluateWhichHandsToRender(LocalPlayer player, CallbackInfoReturnable<ItemInHandRenderer.HandRenderSelection> cir) {
-		if (player.getMainHandItem().is(AAItemTags.CLAYMORES) && cir.getReturnValue().renderMainHand) {
+		if (player.getMainHandItem().is(AAItemTags.TWO_HANDED) && cir.getReturnValue().renderMainHand) {
 			cir.setReturnValue(ItemInHandRenderer.HandRenderSelection.RENDER_MAIN_HAND_ONLY);
 		}
 	}
