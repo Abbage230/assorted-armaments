@@ -15,9 +15,10 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 		add("name." + AssortedArmaments.ID, "Assorted Armaments");
 
 		add("desc." + AssortedArmaments.ID + ".shift", "Hold [SHIFT] for more information");
-		add("desc." + AssortedArmaments.ID + ".claymore1", "Can be used to block melee damage that is equal to half of the weapon's damage");
-		add("desc." + AssortedArmaments.ID + ".claymore2", "On a sweeping attack, all targets in range take 100% damage");
-		add("desc." + AssortedArmaments.ID + ".claymore3", "Disables offhand items when held in main hand");
+		add("desc." + AssortedArmaments.ID + ".can_block", "Can be used to block melee damage that is equal to half of the weapon's damage");
+		add("desc." + AssortedArmaments.ID + ".efficient_sweep", "On a sweeping attack, all targets in range take 100% damage");
+		add("desc." + AssortedArmaments.ID + ".two_handed", "Disables offhand items when held in main hand");
+
 		add(AAItems.WOODEN_CLAYMORE.get(), "Wooden Claymore");
 		add(AAItems.STONE_CLAYMORE.get(), "Stone Claymore");
 		add(AAItems.IRON_CLAYMORE.get(), "Iron Claymore");

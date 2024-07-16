@@ -1,8 +1,8 @@
 {
-  "desc.assorted_armaments.claymore1": "Can be used to block melee damage that is equal to half of the weapon's damage",
-  "desc.assorted_armaments.claymore2": "On a sweeping attack, all targets in range take 100% damage",
-  "desc.assorted_armaments.claymore3": "Disables offhand items when held in main hand",
+  "desc.assorted_armaments.can_block": "Can be used to block melee damage that is equal to half of the weapon's damage",
+  "desc.assorted_armaments.efficient_sweep": "On a sweeping attack, all targets in range take 100% damage",
   "desc.assorted_armaments.shift": "Hold [SHIFT] for more information",
+  "desc.assorted_armaments.two_handed": "Disables offhand items when held in main hand",
   "item.assorted_armaments.diamond_claymore": "Diamond Claymore",
   "item.assorted_armaments.golden_claymore": "Golden Claymore",
   "item.assorted_armaments.iron_claymore": "Iron Claymore",

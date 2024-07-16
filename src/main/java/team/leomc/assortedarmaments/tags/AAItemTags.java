@@ -5,11 +5,19 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import team.leomc.assortedarmaments.AssortedArmaments;
 
+import java.util.List;
+
 public class AAItemTags {
 	public static final TagKey<Item> TWO_HANDED = create("two_handed");
 	public static final TagKey<Item> CAN_BLOCK = create("can_block");
 	public static final TagKey<Item> EFFICIENT_SWEEP = create("efficient_sweep");
 	public static final TagKey<Item> CLAYMORES = create("claymores");
+
+	public static final List<TagKey<Item>> TOOLTIP_TAGS = List.of(
+		TWO_HANDED,
+		CAN_BLOCK,
+		EFFICIENT_SWEEP
+	);
 
 	private static TagKey<Item> create(String id) {
 		return TagKey.create(Registries.ITEM, AssortedArmaments.id(id));

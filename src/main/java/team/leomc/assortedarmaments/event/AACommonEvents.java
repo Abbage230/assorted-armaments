@@ -1,12 +1,20 @@
 package team.leomc.assortedarmaments.event;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import team.leomc.assortedarmaments.AACommonConfig;
 import team.leomc.assortedarmaments.AssortedArmaments;
@@ -44,6 +52,22 @@ public class AACommonEvents {
 						speedInstance.removeModifier(getBlockSpeedModifier().id());
 					}
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	private static void onItemTooltip(ItemTooltipEvent event) {
+		ItemStack stack = event.getItemStack();
+		if (FMLLoader.getDist() == Dist.CLIENT) {
+			if (AssortedArmaments.ClientHelper.isShiftKeyDown()) {
+				for (TagKey<Item> key : AAItemTags.TOOLTIP_TAGS) {
+					if (stack.is(key)) {
+						event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + "." + key.location().getPath()).withStyle(ChatFormatting.YELLOW));
+					}
+				}
+			} else if (AAItemTags.TOOLTIP_TAGS.stream().anyMatch(stack::is)) {
+				event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + ".shift").withStyle(ChatFormatting.YELLOW));
 			}
 		}
 	}

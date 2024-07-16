@@ -1,8 +1,8 @@
 {
-  "desc.assorted_armaments.claymore1": "可以格挡武器伤害一半大小的近战伤害",
-  "desc.assorted_armaments.claymore2": "横扫攻击时，范围内所有目标受到100%的伤害",
-  "desc.assorted_armaments.claymore3": "拿在主手时，禁用副手物品",
+  "desc.assorted_armaments.can_block": "可以格挡武器伤害一半大小的近战伤害",
+  "desc.assorted_armaments.efficient_sweep": "横扫攻击时，范围内所有目标受到100%的伤害",
   "desc.assorted_armaments.shift": "按[SHIFT]查看更多信息",
+  "desc.assorted_armaments.two_handed": "拿在主手时，禁用副手物品",
   "item.assorted_armaments.diamond_claymore": "钻石大剑",
   "item.assorted_armaments.golden_claymore": "金大剑",
   "item.assorted_armaments.iron_claymore": "铁大剑",
