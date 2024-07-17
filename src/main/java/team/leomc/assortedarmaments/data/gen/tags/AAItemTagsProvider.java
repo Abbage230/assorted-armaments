@@ -53,6 +53,7 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 		);
 		tag(ItemTags.SWORDS).addTag(AAItemTags.CLAYMORES);
 		tag(ItemTags.SWORD_ENCHANTABLE).addTag(AAItemTags.MACES);
+		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(AAItemTags.MACES);
 		tag(ItemTags.PIGLIN_LOVED).add(
 			AAItems.GOLDEN_CLAYMORE.get(),
 			AAItems.GOLDEN_MACE.get()

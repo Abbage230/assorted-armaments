@@ -1,4 +1,4 @@
-// 1.21	2024-07-17T12:10:52.6461927	Tags for minecraft:item mod id assorted_armaments
+// 1.21	2024-07-17T13:05:47.7797965	Tags for minecraft:item mod id assorted_armaments
 2339775d05f0f18b3a4b0442182b2947a8d21dac data/assorted_armaments/tags/item/armor_based_damage.json
 d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/can_block.json
 f24a559480a18b444e7f297e1003e8167bc0f39a data/assorted_armaments/tags/item/claymores.json
@@ -10,6 +10,7 @@ d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/effic
 7077b1b5725e080525035c20f8566479b8e6bd11 data/assorted_armaments/tags/item/piglins_can_use.json
 d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/two_handed.json
 98f49f4247d9fd93ce70a45c22a636e58c22225d data/assorted_armaments/tags/item/zombies_can_use.json
+2339775d05f0f18b3a4b0442182b2947a8d21dac data/minecraft/tags/item/enchantable/durability.json
 2339775d05f0f18b3a4b0442182b2947a8d21dac data/minecraft/tags/item/enchantable/sword.json
 7077b1b5725e080525035c20f8566479b8e6bd11 data/minecraft/tags/item/piglin_loved.json
 d500bd43e88c70df0ec4054b266d05b7df7e221e data/minecraft/tags/item/swords.json
