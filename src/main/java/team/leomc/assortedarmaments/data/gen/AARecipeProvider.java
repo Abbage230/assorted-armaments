@@ -29,15 +29,26 @@ public class AARecipeProvider extends RecipeProvider {
 		claymore(recipeOutput, AAItems.GOLDEN_CLAYMORE.get(), Items.GOLD_INGOT);
 		netheriteSmithing(recipeOutput, AAItems.DIAMOND_CLAYMORE.get(), RecipeCategory.COMBAT, AAItems.NETHERITE_CLAYMORE.get());
 
+		mace(recipeOutput, AAItems.WOODEN_MACE.get(), ItemTags.PLANKS);
+		mace(recipeOutput, AAItems.STONE_MACE.get(), ItemTags.STONE_TOOL_MATERIALS);
+		mace(recipeOutput, AAItems.IRON_MACE.get(), Items.IRON_INGOT);
+		mace(recipeOutput, AAItems.DIAMOND_MACE.get(), Items.DIAMOND);
+		mace(recipeOutput, AAItems.GOLDEN_MACE.get(), Items.GOLD_INGOT);
+		netheriteSmithing(recipeOutput, AAItems.DIAMOND_MACE.get(), RecipeCategory.COMBAT, AAItems.NETHERITE_MACE.get());
+
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(
-				AAItems.GOLDEN_CLAYMORE.get()
+				AAItems.GOLDEN_CLAYMORE.get(),
+				AAItems.GOLDEN_MACE.get()
 			), RecipeCategory.MISC, Items.GOLD_NUGGET, 0.1F, 200)
 			.unlockedBy("has_golden_claymore", has(AAItems.GOLDEN_CLAYMORE.get()))
+			.unlockedBy("has_golden_mace", has(AAItems.GOLDEN_MACE.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.GOLD_NUGGET)));
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(
-				AAItems.IRON_CLAYMORE.get()
+				AAItems.IRON_CLAYMORE.get(),
+				AAItems.IRON_MACE.get()
 			), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1F, 200)
 			.unlockedBy("has_iron_claymore", has(AAItems.IRON_CLAYMORE.get()))
+			.unlockedBy("has_iron_mace", has(AAItems.IRON_MACE.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.IRON_NUGGET)));
 	}
 
@@ -63,6 +74,28 @@ public class AARecipeProvider extends RecipeProvider {
 			.pattern(" XX")
 			.pattern("XXX")
 			.pattern("#X ")
+			.unlockedBy(getHasName(input), has(input))
+			.save(recipeOutput);
+	}
+
+	protected void mace(RecipeOutput recipeOutput, ItemLike output, TagKey<Item> input) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output)
+			.define('#', Tags.Items.RODS_WOODEN)
+			.define('X', input)
+			.pattern("X#X")
+			.pattern("X#X")
+			.pattern(" # ")
+			.unlockedBy("has_item", has(input))
+			.save(recipeOutput);
+	}
+
+	protected void mace(RecipeOutput recipeOutput, ItemLike output, ItemLike input) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output)
+			.define('#', Tags.Items.RODS_WOODEN)
+			.define('X', input)
+			.pattern("X#X")
+			.pattern("X#X")
+			.pattern(" # ")
 			.unlockedBy(getHasName(input), has(input))
 			.save(recipeOutput);
 	}

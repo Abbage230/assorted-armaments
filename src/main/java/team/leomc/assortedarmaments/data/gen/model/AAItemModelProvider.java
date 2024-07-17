@@ -31,6 +31,13 @@ public class AAItemModelProvider extends ItemModelProvider {
 		inventoryModel(AAItems.GOLDEN_CLAYMORE.get());
 		claymore(AAItems.NETHERITE_CLAYMORE.get());
 		inventoryModel(AAItems.NETHERITE_CLAYMORE.get());
+
+		handheld(AAItems.WOODEN_MACE.get());
+		handheld(AAItems.STONE_MACE.get());
+		handheld(AAItems.IRON_MACE.get());
+		handheld(AAItems.DIAMOND_MACE.get());
+		handheld(AAItems.GOLDEN_MACE.get());
+		handheld(AAItems.NETHERITE_MACE.get());
 	}
 
 	private void claymore(Item item) {

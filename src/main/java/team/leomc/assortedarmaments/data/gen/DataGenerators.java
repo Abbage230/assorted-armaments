@@ -12,6 +12,7 @@ import team.leomc.assortedarmaments.data.gen.lang.AAChineseLanguageProvider;
 import team.leomc.assortedarmaments.data.gen.lang.AAEnglishLanguageProvider;
 import team.leomc.assortedarmaments.data.gen.model.AAItemModelProvider;
 import team.leomc.assortedarmaments.data.gen.tags.AABlockTagsProvider;
+import team.leomc.assortedarmaments.data.gen.tags.AAEntityTagsProvider;
 import team.leomc.assortedarmaments.data.gen.tags.AAItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -33,6 +34,7 @@ public class DataGenerators {
 		AABlockTagsProvider blockTags = new AABlockTagsProvider(output, lookupProvider, helper);
 		generator.addProvider(event.includeServer(), blockTags);
 		generator.addProvider(event.includeServer(), new AAItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), helper));
+		generator.addProvider(event.includeServer(), new AAEntityTagsProvider(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new AARecipeProvider(output, lookupProvider));
 	}
 }

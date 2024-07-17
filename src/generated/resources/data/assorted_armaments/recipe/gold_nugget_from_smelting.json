@@ -3,9 +3,14 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "assorted_armaments:golden_claymore"
-  },
+  "ingredient": [
+    {
+      "item": "assorted_armaments:golden_claymore"
+    },
+    {
+      "item": "assorted_armaments:golden_mace"
+    }
+  ],
   "result": {
     "count": 1,
     "id": "minecraft:gold_nugget"

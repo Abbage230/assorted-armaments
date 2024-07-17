@@ -1,13 +1,22 @@
 {
+  "desc.assorted_armaments.armor_based_damage": "Deals extra damage to enemies with armor",
   "desc.assorted_armaments.can_block": "Can be used to block melee damage that is equal to half of the weapon's damage",
-  "desc.assorted_armaments.efficient_sweep": "On a sweeping attack, all targets in range take 100% damage",
+  "desc.assorted_armaments.disables_blocking_on_attack": "Disables the target's ability to block",
+  "desc.assorted_armaments.efficient_sweep": "All targets in range on a sweeping attack take the same damage as a direct melee attack",
+  "desc.assorted_armaments.extra_knockback": "Deals extra knockback",
   "desc.assorted_armaments.shift": "Hold [SHIFT] for more information",
   "desc.assorted_armaments.two_handed": "Disables offhand items when held in main hand",
   "item.assorted_armaments.diamond_claymore": "Diamond Claymore",
+  "item.assorted_armaments.diamond_mace": "Diamond Mace",
   "item.assorted_armaments.golden_claymore": "Golden Claymore",
+  "item.assorted_armaments.golden_mace": "Golden Mace",
   "item.assorted_armaments.iron_claymore": "Iron Claymore",
+  "item.assorted_armaments.iron_mace": "Iron Mace",
   "item.assorted_armaments.netherite_claymore": "Netherite Claymore",
+  "item.assorted_armaments.netherite_mace": "Netherite Mace",
   "item.assorted_armaments.stone_claymore": "Stone Claymore",
+  "item.assorted_armaments.stone_mace": "Stone Mace",
   "item.assorted_armaments.wooden_claymore": "Wooden Claymore",
+  "item.assorted_armaments.wooden_mace": "Wooden Mace",
   "name.assorted_armaments": "Assorted Armaments"
 }
