@@ -15,8 +15,11 @@ public class AAItemTags {
 	public static final TagKey<Item> DISABLES_BLOCKING_ON_ATTACK = create("disables_blocking_on_attack");
 	public static final TagKey<Item> DISABLED_WHEN_DISABLING_BLOCKING = create("disabled_when_disabling_blocking");
 	public static final TagKey<Item> EXTRA_KNOCKBACK = create("extra_knockback");
+
 	public static final TagKey<Item> CLAYMORES = create("claymores");
 	public static final TagKey<Item> MACES = create("maces");
+	public static final TagKey<Item> FLAILS = create("flails");
+
 	public static final TagKey<Item> ZOMBIES_CAN_USE = create("zombies_can_use");
 	public static final TagKey<Item> PIGLINS_CAN_USE = create("piglins_can_use");
 

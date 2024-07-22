@@ -11,6 +11,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_iron_flail": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assorted_armaments:iron_flail"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_iron_mace": {
       "conditions": {
         "items": [
@@ -32,7 +42,8 @@
     [
       "has_the_recipe",
       "has_iron_claymore",
-      "has_iron_mace"
+      "has_iron_mace",
+      "has_iron_flail"
     ]
   ],
   "rewards": {

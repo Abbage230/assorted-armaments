@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "c:rods/wooden"
+    },
+    "$": {
+      "tag": "c:chains"
+    },
+    "X": {
+      "tag": "minecraft:stone_tool_materials"
+    }
+  },
+  "pattern": [
+    "$XX",
+    "$XX",
+    "#  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "assorted_armaments:stone_flail"
+  }
+}

@@ -1,20 +1,33 @@
 package team.leomc.assortedarmaments.client.event;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.IArmPoseTransformer;
 import net.neoforged.neoforge.client.event.ModelEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.model.BakedModelWrapper;
+import org.jetbrains.annotations.Nullable;
 import team.leomc.assortedarmaments.AssortedArmaments;
 import team.leomc.assortedarmaments.registry.AAItems;
+import team.leomc.assortedarmaments.tags.AAItemTags;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,14 +37,62 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 @EventBusSubscriber(modid = AssortedArmaments.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class AAClientSetupEvents {
-	public static final Map<ModelResourceLocation, ModelResourceLocation> ITEMS_WITH_INV_ICON = Map.of(
-		ModelResourceLocation.inventory(AssortedArmaments.id("wooden_claymore")), ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
-		ModelResourceLocation.inventory(AssortedArmaments.id("stone_claymore")), ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
-		ModelResourceLocation.inventory(AssortedArmaments.id("iron_claymore")), ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
-		ModelResourceLocation.inventory(AssortedArmaments.id("diamond_claymore")), ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
-		ModelResourceLocation.inventory(AssortedArmaments.id("golden_claymore")), ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
-		ModelResourceLocation.inventory(AssortedArmaments.id("netherite_claymore")), ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory"))
-	);
+	public static final Map<ModelResourceLocation, Map<ItemDisplayContext, ModelResourceLocation>> ITEMS_WITH_SPECIAL_MODELS = new HashMap<>(Map.ofEntries(
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("stone_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("stone_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_flail"))
+		))
+	));
 
 	public static final Map<ModelResourceLocation, BakedModel> BAKED_MODELS = new HashMap<>();
 
@@ -43,12 +104,57 @@ public class AAClientSetupEvents {
 		ItemProperties.register(AAItems.DIAMOND_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 		ItemProperties.register(AAItems.GOLDEN_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 		ItemProperties.register(AAItems.NETHERITE_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+
+		ItemProperties.register(AAItems.WOODEN_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+		ItemProperties.register(AAItems.STONE_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+		ItemProperties.register(AAItems.IRON_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+		ItemProperties.register(AAItems.DIAMOND_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+		ItemProperties.register(AAItems.GOLDEN_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+		ItemProperties.register(AAItems.NETHERITE_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+	}
+
+	public static final EnumProxy<HumanoidModel.ArmPose> ASSORTED_ARMAMENTS_FLAIL_SPIN_POSE = new EnumProxy<>(
+		HumanoidModel.ArmPose.class, false, (IArmPoseTransformer) (model, entity, arm) -> {
+		if (arm == HumanoidArm.RIGHT) {
+			model.rightArm.xRot = -180 * Mth.DEG_TO_RAD;
+			model.rightArm.yRot = 0;
+			model.rightArm.zRot = 0;
+		} else {
+			model.leftArm.xRot = -180 * Mth.DEG_TO_RAD;
+			model.leftArm.yRot = 0;
+			model.leftArm.zRot = 0;
+		}
+	});
+
+	@SubscribeEvent
+	private static void onRegisterClientExtensions(RegisterClientExtensionsEvent event) {
+		event.registerItem(new IClientItemExtensions() {
+			@Nullable
+			@Override
+			public HumanoidModel.ArmPose getArmPose(LivingEntity living, InteractionHand hand, ItemStack itemStack) {
+				if (living.isUsingItem() && living.getUseItem().is(AAItemTags.FLAILS)) {
+					return ASSORTED_ARMAMENTS_FLAIL_SPIN_POSE.getValue();
+				}
+				return null;
+			}
+
+			@Override
+			public boolean applyForgeHandTransform(PoseStack poseStack, LocalPlayer player, HumanoidArm arm, ItemStack itemInHand, float partialTick, float equipProcess, float swingProcess) {
+				if (player.isUsingItem() && player.getUseItem().is(AAItemTags.FLAILS)) {
+					poseStack.translate(0, 0.7f, 0.1f);
+					return true;
+				}
+				return false;
+			}
+		}, AAItems.WOODEN_FLAIL.get(), AAItems.STONE_FLAIL.get(), AAItems.IRON_FLAIL.get(), AAItems.DIAMOND_FLAIL.get(), AAItems.GOLDEN_FLAIL.get(), AAItems.NETHERITE_FLAIL.get());
 	}
 
 	@SubscribeEvent
 	private static void onRegisterAdditionalModels(ModelEvent.RegisterAdditional event) {
-		for (Map.Entry<ModelResourceLocation, ModelResourceLocation> entry : ITEMS_WITH_INV_ICON.entrySet()) {
-			event.register(entry.getValue());
+		for (Map.Entry<ModelResourceLocation, Map<ItemDisplayContext, ModelResourceLocation>> entry : ITEMS_WITH_SPECIAL_MODELS.entrySet()) {
+			for (Map.Entry<ItemDisplayContext, ModelResourceLocation> entry1 : entry.getValue().entrySet()) {
+				event.register(entry1.getValue());
+			}
 		}
 	}
 
@@ -57,7 +163,7 @@ public class AAClientSetupEvents {
 		BAKED_MODELS.clear();
 		BAKED_MODELS.putAll(event.getModels());
 		for (ModelResourceLocation location : event.getModels().keySet()) {
-			if (ITEMS_WITH_INV_ICON.containsKey(location)) {
+			if (ITEMS_WITH_SPECIAL_MODELS.containsKey(location)) {
 				BakedModel model = event.getModels().get(location);
 				List<ItemOverrides.BakedOverride> overrides = new ArrayList<>();
 				for (ItemOverrides.BakedOverride bakedOverride : model.getOverrides().getOverrides()) {
@@ -65,8 +171,8 @@ public class AAClientSetupEvents {
 						overrides.add(new ItemOverrides.BakedOverride(bakedOverride.matchers, new BakedModelWrapper<>(bakedOverride.model) {
 							@Override
 							public BakedModel applyTransform(ItemDisplayContext cameraTransformType, PoseStack poseStack, boolean applyLeftHandTransform) {
-								if (cameraTransformType == ItemDisplayContext.GUI) {
-									return BAKED_MODELS.get(ITEMS_WITH_INV_ICON.get(location));
+								if (ITEMS_WITH_SPECIAL_MODELS.get(location).containsKey(cameraTransformType)) {
+									return BAKED_MODELS.get(ITEMS_WITH_SPECIAL_MODELS.get(location).get(cameraTransformType));
 								}
 								return super.applyTransform(cameraTransformType, poseStack, applyLeftHandTransform);
 							}
@@ -76,8 +182,8 @@ public class AAClientSetupEvents {
 				event.getModels().put(location, new BakedModelWrapper<>(model) {
 					@Override
 					public BakedModel applyTransform(ItemDisplayContext cameraTransformType, PoseStack poseStack, boolean applyLeftHandTransform) {
-						if (cameraTransformType == ItemDisplayContext.GUI) {
-							return BAKED_MODELS.get(ITEMS_WITH_INV_ICON.get(location));
+						if (ITEMS_WITH_SPECIAL_MODELS.get(location).containsKey(cameraTransformType)) {
+							return BAKED_MODELS.get(ITEMS_WITH_SPECIAL_MODELS.get(location).get(cameraTransformType));
 						}
 						return super.applyTransform(cameraTransformType, poseStack, applyLeftHandTransform);
 					}

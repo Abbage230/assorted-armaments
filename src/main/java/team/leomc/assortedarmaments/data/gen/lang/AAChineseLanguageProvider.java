@@ -35,5 +35,12 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 		add(AAItems.DIAMOND_MACE.get(), "钻石钉头锤");
 		add(AAItems.GOLDEN_MACE.get(), "金钉头锤");
 		add(AAItems.NETHERITE_MACE.get(), "下界合金钉头锤");
+
+		add(AAItems.WOODEN_FLAIL.get(), "木流星锤");
+		add(AAItems.STONE_FLAIL.get(), "石流星锤");
+		add(AAItems.IRON_FLAIL.get(), "铁流星锤");
+		add(AAItems.DIAMOND_FLAIL.get(), "钻石流星锤");
+		add(AAItems.GOLDEN_FLAIL.get(), "金流星锤");
+		add(AAItems.NETHERITE_FLAIL.get(), "下界合金流星锤");
 	}
 }

@@ -63,6 +63,9 @@ public class AACommonEvents {
 			if (living.getWeaponItem().is(AAItemTags.ARMOR_BASED_DAMAGE)) {
 				event.setAmount((float) (event.getAmount() + victim.getArmorValue() * AACommonConfig.armorBasedAttackDamagePercentage));
 			}
+			if (living.isUsingItem() && living.getUseItem().is(AAItemTags.FLAILS)) {
+				event.setAmount(event.getAmount() * 0.1f * Math.min((living.getTicksUsingItem() / 20f), 5));
+			}
 		}
 	}
 

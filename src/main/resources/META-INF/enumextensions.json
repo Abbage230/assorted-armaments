@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "ASSORTED_ARMAMENTS_FLAIL_SPIN",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "team/leomc/assortedarmaments/client/event/AAClientSetupEvents",
+        "field": "ASSORTED_ARMAMENTS_FLAIL_SPIN_POSE"
+      }
+    }
+  ]
+}

@@ -12,6 +12,7 @@
   "client": [
     "ItemInHandLayerMixin",
     "ItemInHandRendererMixin",
+    "ItemRendererMixin",
     "LocalPlayerMixin"
   ],
   "injectors": {

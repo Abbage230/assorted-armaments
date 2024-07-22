@@ -36,24 +36,46 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 			AAItems.GOLDEN_MACE.get(),
 			AAItems.NETHERITE_MACE.get()
 		);
-		tag(AAItemTags.TWO_HANDED).addTag(AAItemTags.CLAYMORES);
-		tag(AAItemTags.CAN_BLOCK).addTag(AAItemTags.CLAYMORES);
-		tag(AAItemTags.EFFICIENT_SWEEP).addTag(AAItemTags.CLAYMORES);
-		tag(AAItemTags.ARMOR_BASED_DAMAGE).addTag(AAItemTags.MACES);
-		tag(AAItemTags.DISABLES_BLOCKING_ON_ATTACK).addTag(AAItemTags.MACES);
-		tag(AAItemTags.DISABLED_WHEN_DISABLING_BLOCKING).addTag(AAItemTags.CAN_BLOCK).addTag(Tags.Items.TOOLS_SHIELD);
-		tag(AAItemTags.EXTRA_KNOCKBACK).addTag(AAItemTags.MACES);
+		tag(AAItemTags.FLAILS).add(
+			AAItems.WOODEN_FLAIL.get(),
+			AAItems.STONE_FLAIL.get(),
+			AAItems.IRON_FLAIL.get(),
+			AAItems.DIAMOND_FLAIL.get(),
+			AAItems.GOLDEN_FLAIL.get(),
+			AAItems.NETHERITE_FLAIL.get()
+		);
+		tag(AAItemTags.TWO_HANDED)
+			.addTag(AAItemTags.CLAYMORES)
+			.addTag(AAItemTags.FLAILS);
+		tag(AAItemTags.CAN_BLOCK)
+			.addTag(AAItemTags.CLAYMORES);
+		tag(AAItemTags.EFFICIENT_SWEEP)
+			.addTag(AAItemTags.CLAYMORES);
+		tag(AAItemTags.ARMOR_BASED_DAMAGE)
+			.addTag(AAItemTags.MACES)
+			.addTag(AAItemTags.FLAILS);
+		tag(AAItemTags.DISABLES_BLOCKING_ON_ATTACK)
+			.addTag(AAItemTags.MACES)
+			.addTag(AAItemTags.FLAILS);
+		tag(AAItemTags.DISABLED_WHEN_DISABLING_BLOCKING)
+			.addTag(AAItemTags.CAN_BLOCK)
+			.addTag(Tags.Items.TOOLS_SHIELD);
+		tag(AAItemTags.EXTRA_KNOCKBACK).addTag(AAItemTags.MACES).
+			addTag(AAItemTags.FLAILS);
 		tag(AAItemTags.ZOMBIES_CAN_USE).add(
 			AAItems.IRON_CLAYMORE.get(),
-			AAItems.IRON_MACE.get()
+			AAItems.IRON_MACE.get(),
+			AAItems.IRON_FLAIL.get()
 		);
 		tag(AAItemTags.PIGLINS_CAN_USE).add(
 			AAItems.GOLDEN_CLAYMORE.get(),
-			AAItems.GOLDEN_MACE.get()
+			AAItems.GOLDEN_MACE.get(),
+			AAItems.GOLDEN_FLAIL.get()
 		);
 		tag(ItemTags.SWORDS).addTag(AAItemTags.CLAYMORES);
-		tag(ItemTags.SWORD_ENCHANTABLE).addTag(AAItemTags.MACES);
-		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(AAItemTags.MACES);
+		tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS);
+		tag(ItemTags.SWORD_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS);
+		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS);
 		tag(ItemTags.PIGLIN_LOVED).add(
 			AAItems.GOLDEN_CLAYMORE.get(),
 			AAItems.GOLDEN_MACE.get()

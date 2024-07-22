@@ -35,5 +35,12 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 		add(AAItems.DIAMOND_MACE.get(), "Diamond Mace");
 		add(AAItems.GOLDEN_MACE.get(), "Golden Mace");
 		add(AAItems.NETHERITE_MACE.get(), "Netherite Mace");
+
+		add(AAItems.WOODEN_FLAIL.get(), "Wooden Flail");
+		add(AAItems.STONE_FLAIL.get(), "Stone Flail");
+		add(AAItems.IRON_FLAIL.get(), "Iron Flail");
+		add(AAItems.DIAMOND_FLAIL.get(), "Diamond Flail");
+		add(AAItems.GOLDEN_FLAIL.get(), "Golden Flail");
+		add(AAItems.NETHERITE_FLAIL.get(), "Netherite Flail");
 	}
 }

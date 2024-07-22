@@ -36,19 +36,30 @@ public class AARecipeProvider extends RecipeProvider {
 		mace(recipeOutput, AAItems.GOLDEN_MACE.get(), Items.GOLD_INGOT);
 		netheriteSmithing(recipeOutput, AAItems.DIAMOND_MACE.get(), RecipeCategory.COMBAT, AAItems.NETHERITE_MACE.get());
 
+		flail(recipeOutput, AAItems.WOODEN_FLAIL.get(), ItemTags.PLANKS);
+		flail(recipeOutput, AAItems.STONE_FLAIL.get(), ItemTags.STONE_TOOL_MATERIALS);
+		flail(recipeOutput, AAItems.IRON_FLAIL.get(), Items.IRON_INGOT);
+		flail(recipeOutput, AAItems.DIAMOND_FLAIL.get(), Items.DIAMOND);
+		flail(recipeOutput, AAItems.GOLDEN_FLAIL.get(), Items.GOLD_INGOT);
+		netheriteSmithing(recipeOutput, AAItems.DIAMOND_FLAIL.get(), RecipeCategory.COMBAT, AAItems.NETHERITE_FLAIL.get());
+
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(
 				AAItems.GOLDEN_CLAYMORE.get(),
-				AAItems.GOLDEN_MACE.get()
+				AAItems.GOLDEN_MACE.get(),
+				AAItems.GOLDEN_FLAIL.get()
 			), RecipeCategory.MISC, Items.GOLD_NUGGET, 0.1F, 200)
 			.unlockedBy("has_golden_claymore", has(AAItems.GOLDEN_CLAYMORE.get()))
 			.unlockedBy("has_golden_mace", has(AAItems.GOLDEN_MACE.get()))
+			.unlockedBy("has_golden_flail", has(AAItems.GOLDEN_FLAIL.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.GOLD_NUGGET)));
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(
 				AAItems.IRON_CLAYMORE.get(),
-				AAItems.IRON_MACE.get()
+				AAItems.IRON_MACE.get(),
+				AAItems.IRON_FLAIL.get()
 			), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1F, 200)
 			.unlockedBy("has_iron_claymore", has(AAItems.IRON_CLAYMORE.get()))
 			.unlockedBy("has_iron_mace", has(AAItems.IRON_MACE.get()))
+			.unlockedBy("has_iron_flail", has(AAItems.IRON_FLAIL.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.IRON_NUGGET)));
 	}
 
@@ -96,6 +107,30 @@ public class AARecipeProvider extends RecipeProvider {
 			.pattern("X#X")
 			.pattern("X#X")
 			.pattern(" # ")
+			.unlockedBy(getHasName(input), has(input))
+			.save(recipeOutput);
+	}
+
+	protected void flail(RecipeOutput recipeOutput, ItemLike output, TagKey<Item> input) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output)
+			.define('$', Tags.Items.CHAINS)
+			.define('#', Tags.Items.RODS_WOODEN)
+			.define('X', input)
+			.pattern("$XX")
+			.pattern("$XX")
+			.pattern("#  ")
+			.unlockedBy("has_item", has(input))
+			.save(recipeOutput);
+	}
+
+	protected void flail(RecipeOutput recipeOutput, ItemLike output, ItemLike input) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output)
+			.define('$', Tags.Items.CHAINS)
+			.define('#', Tags.Items.RODS_WOODEN)
+			.define('X', input)
+			.pattern("$XX")
+			.pattern("$XX")
+			.pattern("#  ")
 			.unlockedBy(getHasName(input), has(input))
 			.save(recipeOutput);
 	}

@@ -42,9 +42,9 @@ public class ClaymoreItem extends SwordItem {
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-		ItemStack itemstack = player.getItemInHand(hand);
+		ItemStack stack = player.getItemInHand(hand);
 		player.startUsingItem(hand);
-		return InteractionResultHolder.consume(itemstack);
+		return InteractionResultHolder.consume(stack);
 	}
 
 	@Override
