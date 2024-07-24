@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "team.leomc.assortedarmaments.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "bcs_expedition_world.refmap.json",
+  "refmap": "assorted_armaments.refmap.json",
   "mixins": [
     "ItemStackMixin",
     "LivingEntityMixin",

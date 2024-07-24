@@ -20,17 +20,17 @@ public class AAItemModelProvider extends ItemModelProvider {
 	@Override
 	protected void registerModels() {
 		claymore(AAItems.WOODEN_CLAYMORE.get());
-		inventoryModel(AAItems.WOODEN_CLAYMORE.get());
+		inventoryHandheld(AAItems.WOODEN_CLAYMORE.get());
 		claymore(AAItems.STONE_CLAYMORE.get());
-		inventoryModel(AAItems.STONE_CLAYMORE.get());
+		inventoryHandheld(AAItems.STONE_CLAYMORE.get());
 		claymore(AAItems.IRON_CLAYMORE.get());
-		inventoryModel(AAItems.IRON_CLAYMORE.get());
+		inventoryHandheld(AAItems.IRON_CLAYMORE.get());
 		claymore(AAItems.DIAMOND_CLAYMORE.get());
-		inventoryModel(AAItems.DIAMOND_CLAYMORE.get());
+		inventoryHandheld(AAItems.DIAMOND_CLAYMORE.get());
 		claymore(AAItems.GOLDEN_CLAYMORE.get());
-		inventoryModel(AAItems.GOLDEN_CLAYMORE.get());
+		inventoryHandheld(AAItems.GOLDEN_CLAYMORE.get());
 		claymore(AAItems.NETHERITE_CLAYMORE.get());
-		inventoryModel(AAItems.NETHERITE_CLAYMORE.get());
+		inventoryHandheld(AAItems.NETHERITE_CLAYMORE.get());
 
 		handheld(AAItems.WOODEN_MACE.get());
 		handheld(AAItems.STONE_MACE.get());
@@ -90,9 +90,9 @@ public class AAItemModelProvider extends ItemModelProvider {
 			.texture("particle", itemTexture(item));
 	}
 
-	private ItemModelBuilder inventoryModel(Item item) {
+	private ItemModelBuilder inventoryHandheld(Item item) {
 		return getBuilder(item.toString() + "_inventory")
-			.parent(new ModelFile.UncheckedModelFile("item/generated"))
+			.parent(new ModelFile.UncheckedModelFile("item/handheld"))
 			.texture("layer0", itemTexture(item) + "_inventory");
 	}
 
