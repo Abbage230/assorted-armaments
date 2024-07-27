@@ -62,7 +62,7 @@ public class AAClientEvents {
 					Player owner = flail.getPlayerOwner();
 					if (owner != null) {
 						int hand = owner.getMainArm() == HumanoidArm.RIGHT ? 1 : -1;
-						if (!owner.getMainHandItem().is(AAItemTags.FLAILS)) {
+						if (!owner.getMainHandItem().is(AAItemTags.FLAILS) && owner.getOffhandItem().is(AAItemTags.FLAILS)) {
 							hand = -hand;
 						}
 						boolean rightHand = (owner.getMainArm() == HumanoidArm.RIGHT && owner.getMainHandItem().is(AAItemTags.FLAILS)) || (owner.getMainArm() == HumanoidArm.LEFT && owner.getOffhandItem().is(AAItemTags.FLAILS));
