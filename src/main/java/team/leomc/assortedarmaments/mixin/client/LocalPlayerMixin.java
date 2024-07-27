@@ -1,4 +1,4 @@
-package team.leomc.assortedarmaments.mixin;
+package team.leomc.assortedarmaments.mixin.client;
 
 import net.minecraft.client.player.Input;
 import net.minecraft.client.player.LocalPlayer;

@@ -23,6 +23,7 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import team.leomc.assortedarmaments.AACommonConfig;
+import team.leomc.assortedarmaments.entity.ThrownFlail;
 import team.leomc.assortedarmaments.tags.AAItemTags;
 
 import java.util.List;
@@ -92,6 +93,13 @@ public class FlailItem extends TieredItem {
 				if (knockback > 0.0F) {
 					living.knockback(knockback * 0.5F, Mth.sin(player.getYRot() * Mth.DEG_TO_RAD), -Mth.cos(player.getYRot() * Mth.DEG_TO_RAD));
 				}
+			}
+			if (player.getTicksUsingItem() >= AACommonConfig.flailThrowMinUseDuration && !player.isCrouching()) {
+				player.stopUsingItem();
+				ThrownFlail flail = new ThrownFlail(level, player);
+				flail.setItem(stack);
+				flail.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 1.8f, 0.5f);
+				level.addFreshEntity(flail);
 			}
 		}
 	}

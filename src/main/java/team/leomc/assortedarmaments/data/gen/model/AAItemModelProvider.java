@@ -41,16 +41,22 @@ public class AAItemModelProvider extends ItemModelProvider {
 
 		flail(AAItems.WOODEN_FLAIL.get());
 		spinningFlail(AAItems.WOODEN_FLAIL.get());
+		thrownFlail(AAItems.WOODEN_FLAIL.get());
 		flail(AAItems.STONE_FLAIL.get());
 		spinningFlail(AAItems.STONE_FLAIL.get());
+		thrownFlail(AAItems.STONE_FLAIL.get());
 		flail(AAItems.IRON_FLAIL.get());
 		spinningFlail(AAItems.IRON_FLAIL.get());
+		thrownFlail(AAItems.IRON_FLAIL.get());
 		flail(AAItems.DIAMOND_FLAIL.get());
 		spinningFlail(AAItems.DIAMOND_FLAIL.get());
+		thrownFlail(AAItems.DIAMOND_FLAIL.get());
 		flail(AAItems.GOLDEN_FLAIL.get());
 		spinningFlail(AAItems.GOLDEN_FLAIL.get());
+		thrownFlail(AAItems.GOLDEN_FLAIL.get());
 		flail(AAItems.NETHERITE_FLAIL.get());
 		spinningFlail(AAItems.NETHERITE_FLAIL.get());
+		thrownFlail(AAItems.NETHERITE_FLAIL.get());
 	}
 
 	private void claymore(Item item) {
@@ -86,6 +92,13 @@ public class AAItemModelProvider extends ItemModelProvider {
 	private ItemModelBuilder spinningFlail(Item item) {
 		return getBuilder(item.toString() + "_spinning")
 			.parent(new ModelFile.UncheckedModelFile(AssortedArmaments.id("item/spinning_flail")))
+			.texture("flail", itemTexture(item) + "_spinning")
+			.texture("particle", itemTexture(item));
+	}
+
+	private ItemModelBuilder thrownFlail(Item item) {
+		return getBuilder(item.toString() + "_thrown")
+			.parent(new ModelFile.UncheckedModelFile(AssortedArmaments.id("item/thrown_flail")))
 			.texture("flail", itemTexture(item) + "_spinning")
 			.texture("particle", itemTexture(item));
 	}

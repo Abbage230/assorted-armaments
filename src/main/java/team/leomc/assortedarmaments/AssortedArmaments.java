@@ -9,6 +9,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import team.leomc.assortedarmaments.registry.AACreativeModeTabs;
+import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 
 @Mod(AssortedArmaments.ID)
@@ -16,9 +17,10 @@ public class AssortedArmaments {
 	public static final String ID = "assorted_armaments";
 
 	public AssortedArmaments(IEventBus modBus, ModContainer container) {
+		container.registerConfig(ModConfig.Type.COMMON, AACommonConfig.SPEC);
 		AAItems.ITEMS.register(modBus);
 		AACreativeModeTabs.TABS.register(modBus);
-		container.registerConfig(ModConfig.Type.COMMON, AACommonConfig.SPEC);
+		AAEntityTypes.ENTITY_TYPES.register(modBus);
 	}
 
 	public static ResourceLocation id(String string) {

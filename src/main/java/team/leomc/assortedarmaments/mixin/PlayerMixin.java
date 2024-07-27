@@ -15,15 +15,20 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+import team.leomc.assortedarmaments.entity.FlailOwner;
+import team.leomc.assortedarmaments.entity.ThrownFlail;
 import team.leomc.assortedarmaments.tags.AAItemTags;
 
 @Mixin(Player.class)
-public abstract class PlayerMixin {
+public abstract class PlayerMixin implements FlailOwner {
 	@Shadow
 	public abstract ItemStack getWeaponItem();
 
 	@Unique
 	private float aa$originalAttackDamage;
+
+	@Unique
+	private ThrownFlail aa$flail;
 
 	@Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getEntitiesOfClass(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;", shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD)
 	private void captureOriginalDamage(Entity target, CallbackInfo ci, float f, ItemStack itemstack, DamageSource damagesource, float f1, float f2, boolean flag4, boolean flag, boolean flag1, CriticalHitEvent critEvent, float f3, boolean flag2, double d0, float f6, Vec3 vec3, boolean flag3, float f4, float f7) {
@@ -36,5 +41,15 @@ public abstract class PlayerMixin {
 			return (float) (aa$originalAttackDamage * (1 + ((Player) (Object) this).getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO) * 0.1));
 		}
 		return damage;
+	}
+
+	@Override
+	public ThrownFlail getFlail() {
+		return aa$flail;
+	}
+
+	@Override
+	public void setFlail(ThrownFlail flail) {
+		this.aa$flail = flail;
 	}
 }

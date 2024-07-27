@@ -3,6 +3,7 @@ package team.leomc.assortedarmaments.data.gen.lang;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 
 public class AAChineseLanguageProvider extends LanguageProvider {
@@ -21,6 +22,8 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 		add("desc." + AssortedArmaments.ID + ".armor_based_damage", "对有护甲的敌人造成额外伤害");
 		add("desc." + AssortedArmaments.ID + ".disables_blocking_on_attack", "攻击被格挡时使目标失去格挡能力");
 		add("desc." + AssortedArmaments.ID + ".extra_knockback", "可造成额外击退");
+
+		add("desc." + AssortedArmaments.ID + ".flails", "可投掷");
 
 		add(AAItems.WOODEN_CLAYMORE.get(), "木大剑");
 		add(AAItems.STONE_CLAYMORE.get(), "石大剑");
@@ -42,5 +45,6 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 		add(AAItems.DIAMOND_FLAIL.get(), "钻石流星锤");
 		add(AAItems.GOLDEN_FLAIL.get(), "金流星锤");
 		add(AAItems.NETHERITE_FLAIL.get(), "下界合金流星锤");
+		add(AAEntityTypes.FLAIL.get(), "流星锤");
 	}
 }

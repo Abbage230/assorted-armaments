@@ -1,4 +1,4 @@
-package team.leomc.assortedarmaments.mixin;
+package team.leomc.assortedarmaments.mixin.client;
 
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;

@@ -10,10 +10,11 @@
     "PlayerMixin"
   ],
   "client": [
-    "ItemInHandLayerMixin",
-    "ItemInHandRendererMixin",
-    "ItemRendererMixin",
-    "LocalPlayerMixin"
+    "client.ItemInHandLayerMixin",
+    "client.ItemInHandRendererMixin",
+    "client.ItemRendererMixin",
+    "client.LocalPlayerMixin",
+    "client.PlayerRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

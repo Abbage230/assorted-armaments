@@ -3,6 +3,7 @@ package team.leomc.assortedarmaments.data.gen.lang;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 
 public class AAEnglishLanguageProvider extends LanguageProvider {
@@ -21,6 +22,8 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 		add("desc." + AssortedArmaments.ID + ".armor_based_damage", "Deals extra damage to enemies with armor");
 		add("desc." + AssortedArmaments.ID + ".disables_blocking_on_attack", "Disables the target's ability to block");
 		add("desc." + AssortedArmaments.ID + ".extra_knockback", "Deals extra knockback");
+
+		add("desc." + AssortedArmaments.ID + ".flails", "Can be thrown");
 
 		add(AAItems.WOODEN_CLAYMORE.get(), "Wooden Claymore");
 		add(AAItems.STONE_CLAYMORE.get(), "Stone Claymore");
@@ -42,5 +45,6 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 		add(AAItems.DIAMOND_FLAIL.get(), "Diamond Flail");
 		add(AAItems.GOLDEN_FLAIL.get(), "Golden Flail");
 		add(AAItems.NETHERITE_FLAIL.get(), "Netherite Flail");
+		add(AAEntityTypes.FLAIL.get(), "Flail");
 	}
 }

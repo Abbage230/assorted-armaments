@@ -29,7 +29,8 @@ public class AAItemTags {
 		EFFICIENT_SWEEP,
 		ARMOR_BASED_DAMAGE,
 		DISABLES_BLOCKING_ON_ATTACK,
-		EXTRA_KNOCKBACK
+		EXTRA_KNOCKBACK,
+		FLAILS
 	);
 
 	private static TagKey<Item> create(String id) {

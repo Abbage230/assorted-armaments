@@ -20,12 +20,15 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.IArmPoseTransformer;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.model.BakedModelWrapper;
 import org.jetbrains.annotations.Nullable;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.client.renderer.entity.ThrownFlailRenderer;
+import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 import team.leomc.assortedarmaments.tags.AAItemTags;
 
@@ -94,6 +97,15 @@ public class AAClientSetupEvents {
 		))
 	));
 
+	public static final List<ModelResourceLocation> ADDITIONAL_MODELS = new ArrayList<>(List.of(
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_flail_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_flail_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_flail_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_flail_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_flail_thrown"))
+	));
+
 	public static final Map<ModelResourceLocation, BakedModel> BAKED_MODELS = new HashMap<>();
 
 	@SubscribeEvent
@@ -111,6 +123,11 @@ public class AAClientSetupEvents {
 		ItemProperties.register(AAItems.DIAMOND_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 		ItemProperties.register(AAItems.GOLDEN_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 		ItemProperties.register(AAItems.NETHERITE_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+	}
+
+	@SubscribeEvent
+	private static void onRegisterEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+		event.registerEntityRenderer(AAEntityTypes.FLAIL.get(), ThrownFlailRenderer::new);
 	}
 
 	public static final EnumProxy<HumanoidModel.ArmPose> ASSORTED_ARMAMENTS_FLAIL_SPIN_POSE = new EnumProxy<>(
@@ -155,6 +172,9 @@ public class AAClientSetupEvents {
 			for (Map.Entry<ItemDisplayContext, ModelResourceLocation> entry1 : entry.getValue().entrySet()) {
 				event.register(entry1.getValue());
 			}
+		}
+		for (ModelResourceLocation location : ADDITIONAL_MODELS) {
+			event.register(location);
 		}
 	}
 

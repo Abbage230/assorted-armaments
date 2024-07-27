@@ -21,6 +21,10 @@ public class AACommonConfig {
 		.comment("How long can the player use a flail? (in ticks, 20 tick = 1 second)")
 		.defineInRange("flailMaxUseDuration", 150, 0, Integer.MAX_VALUE);
 
+	private static final ModConfigSpec.IntValue FLAIL_THROW_MIN_USE_DURATION = BUILDER
+		.comment("What is the minimum amount of time the player have to use the flail to throw it? (in ticks, 20 tick = 1 second)")
+		.defineInRange("flailThrowMinUseDuration", 100, 0, Integer.MAX_VALUE);
+
 	private static final ModConfigSpec.IntValue FLAIL_SPIN_COOLDOWN = BUILDER
 		.comment("How long is the cooldown after using a flail? (in ticks, 20 tick = 1 second)")
 		.defineInRange("flailSpinCooldown", 40, 0, Integer.MAX_VALUE);
@@ -46,6 +50,7 @@ public class AACommonConfig {
 	public static double blockWalkSpeedModifier;
 	public static double armorBasedAttackDamagePercentage;
 	public static int flailMaxUseDuration;
+	public static int flailThrowMinUseDuration;
 	public static int flailSpinCooldown;
 	public static double flailSpinDamageFactor;
 	public static double flailSpinKnockbackFactor;
@@ -57,6 +62,7 @@ public class AACommonConfig {
 		blockWalkSpeedModifier = BLOCK_WALK_SPEED_MODIFIER.get();
 		armorBasedAttackDamagePercentage = ARMOR_BASED_ATTACK_DAMAGE_PERCENTAGE.get();
 		flailMaxUseDuration = FLAIL_MAX_USE_DURATION.get();
+		flailThrowMinUseDuration = FLAIL_THROW_MIN_USE_DURATION.get();
 		flailSpinCooldown = FLAIL_SPIN_COOLDOWN.get();
 		flailSpinDamageFactor = FLAIL_SPIN_DAMAGE_FACTOR.get();
 		flailSpinKnockbackFactor = FLAIL_SPIN_KNOCKBACK_FACTOR.get();
