@@ -14,6 +14,17 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		add("name." + AssortedArmaments.ID, "Assorted Armaments");
+		add("fml.menu.mods.info.description." + AssortedArmaments.ID, "A Minecraft mod that adds more types of weapons");
+
+		add(AssortedArmaments.ID + ".configuration.blockWalkSpeedModifier", "Block Walk Speed Modifier");
+		add(AssortedArmaments.ID + ".configuration.armorBasedAttackDamagePercentage", "Armor Based Attack Damage Percentage");
+		add(AssortedArmaments.ID + ".configuration.flailMaxUseDuration", "Maximum Flail Use Duration");
+		add(AssortedArmaments.ID + ".configuration.flailThrowMinUseDuration", "Minimum Use Duration to Throw a Flail");
+		add(AssortedArmaments.ID + ".configuration.flailSpinCooldown", "Flail Spin Cooldown");
+		add(AssortedArmaments.ID + ".configuration.flailSpinDamageFactor", "Flail Spin Damage Factor");
+		add(AssortedArmaments.ID + ".configuration.flailSpinKnockbackFactor", "Flail Spin Knockback Factor");
+		add(AssortedArmaments.ID + ".configuration.zombieUseWeaponChance", "Chance of a Zombie Using a Modded Weapon");
+		add(AssortedArmaments.ID + ".configuration.piglinUseWeaponChance", "Chance of a Piglin Using a Modded Weapon");
 
 		add("desc." + AssortedArmaments.ID + ".shift", "Hold [SHIFT] for more information");
 		add("desc." + AssortedArmaments.ID + ".can_block", "Can be used to block melee damage that is equal to half of the weapon's damage");

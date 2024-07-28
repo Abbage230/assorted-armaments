@@ -14,6 +14,17 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		add("name." + AssortedArmaments.ID, "百般武艺");
+		add("fml.menu.mods.info.description." + AssortedArmaments.ID, "一个添加更多类型武器的模组");
+
+		add(AssortedArmaments.ID + ".configuration.blockWalkSpeedModifier", "格挡行走速度因数");
+		add(AssortedArmaments.ID + ".configuration.armorBasedAttackDamagePercentage", "基于盔甲的伤害百分比");
+		add(AssortedArmaments.ID + ".configuration.flailMaxUseDuration", "流星锤最长使用时间");
+		add(AssortedArmaments.ID + ".configuration.flailThrowMinUseDuration", "投掷流星锤最短所需时间");
+		add(AssortedArmaments.ID + ".configuration.flailSpinCooldown", "流星锤旋转冷却");
+		add(AssortedArmaments.ID + ".configuration.flailSpinDamageFactor", "流星锤旋转伤害因数");
+		add(AssortedArmaments.ID + ".configuration.flailSpinKnockbackFactor", "流星锤旋转击退因数");
+		add(AssortedArmaments.ID + ".configuration.zombieUseWeaponChance", "僵尸使用模组武器几率");
+		add(AssortedArmaments.ID + ".configuration.piglinUseWeaponChance", "猪灵使用模组武器几率");
 
 		add("desc." + AssortedArmaments.ID + ".shift", "按[SHIFT]查看更多信息");
 		add("desc." + AssortedArmaments.ID + ".can_block", "可以格挡武器伤害一半大小的近战伤害");
