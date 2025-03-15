@@ -20,5 +20,13 @@ public class AANetwork {
 				UpdateBlockAbilityPayload::handle
 			)
 		);
+		registrar.commonToServer(
+			RemoveJavelinPayload.TYPE,
+			RemoveJavelinPayload.STREAM_CODEC,
+			new DirectionalPayloadHandler<>(
+				RemoveJavelinPayload::handle,
+				RemoveJavelinPayload::handle
+			)
+		);
 	}
 }

@@ -34,7 +34,7 @@ public abstract class PlayerMixin implements FlailOwner {
 
 	@ModifyArg(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getEnchantedDamage(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;)F", ordinal = 1), index = 1)
 	private float modifySweepDamage(float damage) {
-		if (getWeaponItem().is(AAItemTags.EFFICIENT_SWEEP)) {
+		if (getWeaponItem().is(AAItemTags.STRONG_SWEEP)) {
 			return (float) (aa$originalAttackDamage * (1 + ((Player) (Object) this).getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO) * 0.1));
 		}
 		return damage;

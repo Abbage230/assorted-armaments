@@ -23,6 +23,8 @@ import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 
 public class ThrownFlail extends ThrowableItemProjectile {
+	private static final String TAG_HIT_TARGET = "hit_target";
+
 	private boolean hitTarget;
 
 	public ThrownFlail(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
@@ -151,12 +153,12 @@ public class ThrownFlail extends ThrowableItemProjectile {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.hitTarget = compound.getBoolean("HitTarget");
+		this.hitTarget = compound.getBoolean(TAG_HIT_TARGET);
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
-		compound.putBoolean("HitTarget", this.hitTarget);
+		compound.putBoolean(TAG_HIT_TARGET, this.hitTarget);
 	}
 }

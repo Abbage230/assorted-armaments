@@ -21,6 +21,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_golden_javelin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assorted_armaments:golden_javelin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_golden_mace": {
       "conditions": {
         "items": [
@@ -43,7 +53,8 @@
       "has_the_recipe",
       "has_golden_claymore",
       "has_golden_mace",
-      "has_golden_flail"
+      "has_golden_flail",
+      "has_golden_javelin"
     ]
   ],
   "rewards": {

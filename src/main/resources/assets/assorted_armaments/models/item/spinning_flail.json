@@ -1,9 +1,5 @@
 {
   "gui_light": "front",
-  "texture_size": [
-    64,
-    64
-  ],
   "display": {
     "thirdperson_righthand": {
       "rotation": [

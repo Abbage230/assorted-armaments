@@ -57,6 +57,19 @@ public class AAItemModelProvider extends ItemModelProvider {
 		flail(AAItems.NETHERITE_FLAIL.get());
 		spinningFlail(AAItems.NETHERITE_FLAIL.get());
 		thrownFlail(AAItems.NETHERITE_FLAIL.get());
+
+		javelin(AAItems.WOODEN_JAVELIN.get());
+		thrownJavelin(AAItems.WOODEN_JAVELIN.get());
+		javelin(AAItems.STONE_JAVELIN.get());
+		thrownJavelin(AAItems.STONE_JAVELIN.get());
+		javelin(AAItems.IRON_JAVELIN.get());
+		thrownJavelin(AAItems.IRON_JAVELIN.get());
+		javelin(AAItems.DIAMOND_JAVELIN.get());
+		thrownJavelin(AAItems.DIAMOND_JAVELIN.get());
+		javelin(AAItems.GOLDEN_JAVELIN.get());
+		thrownJavelin(AAItems.GOLDEN_JAVELIN.get());
+		javelin(AAItems.NETHERITE_JAVELIN.get());
+		thrownJavelin(AAItems.NETHERITE_JAVELIN.get());
 	}
 
 	private void claymore(Item item) {
@@ -72,6 +85,11 @@ public class AAItemModelProvider extends ItemModelProvider {
 		withExistingParent(name(item), AssortedArmaments.id("item/flail"))
 			.texture("layer0", itemTexture(item))
 			.override().predicate(AssortedArmaments.id("spinning"), 1).model(spinning).end();
+	}
+
+	private void javelin(Item item) {
+		withExistingParent(name(item), AssortedArmaments.id("item/javelin"))
+			.texture("layer0", itemTexture(item));
 	}
 
 	private ItemModelBuilder handheld(Item item) {
@@ -100,6 +118,13 @@ public class AAItemModelProvider extends ItemModelProvider {
 		return getBuilder(item.toString() + "_thrown")
 			.parent(new ModelFile.UncheckedModelFile(AssortedArmaments.id("item/thrown_flail")))
 			.texture("flail", itemTexture(item) + "_spinning")
+			.texture("particle", itemTexture(item));
+	}
+
+	private ItemModelBuilder thrownJavelin(Item item) {
+		return getBuilder(item.toString() + "_thrown")
+			.parent(new ModelFile.UncheckedModelFile(AssortedArmaments.id("item/thrown_javelin")))
+			.texture("javelin", itemTexture(item) + "_thrown")
 			.texture("particle", itemTexture(item));
 	}
 

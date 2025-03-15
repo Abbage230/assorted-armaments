@@ -9,7 +9,7 @@
       "tag": "c:chains"
     },
     "X": {
-      "item": "minecraft:diamond"
+      "tag": "c:gems/diamond"
     }
   },
   "pattern": [

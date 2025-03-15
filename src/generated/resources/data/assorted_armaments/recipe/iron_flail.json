@@ -9,7 +9,7 @@
       "tag": "c:chains"
     },
     "X": {
-      "item": "minecraft:iron_ingot"
+      "tag": "c:ingots/iron"
     }
   },
   "pattern": [

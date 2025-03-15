@@ -8,6 +8,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -23,20 +24,32 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import team.leomc.assortedarmaments.AssortedArmaments;
 import team.leomc.assortedarmaments.entity.ThrownFlail;
+import team.leomc.assortedarmaments.network.RemoveJavelinPayload;
 import team.leomc.assortedarmaments.tags.AAItemTags;
 
 @OnlyIn(Dist.CLIENT)
 @EventBusSubscriber(modid = AssortedArmaments.ID, value = Dist.CLIENT)
 public class AAClientEvents {
-	public static final int FULL_BRIGHT = 0xf000f0;
 	private static final ResourceLocation FLAIL_CHAIN_TEXTURE = AssortedArmaments.id("textures/entity/flail_chain.png");
 
 	public static final Int2ObjectArrayMap<Vec3> PLAYER_LEFT_HAND_POS = new Int2ObjectArrayMap<>();
 	public static final Int2ObjectArrayMap<Vec3> PLAYER_RIGHT_HAND_POS = new Int2ObjectArrayMap<>();
 	public static final Int2IntArrayMap FLAIL_LIGHT = new Int2IntArrayMap();
+
+	@SubscribeEvent
+	private static void onClientTick(ClientTickEvent.Post event) {
+		if (AAClientSetupEvents.KEY_MAPPING_REMOVE_JAVELIN.consumeClick()) {
+			Minecraft minecraft = Minecraft.getInstance();
+			if (minecraft.crosshairPickEntity != null) {
+				PacketDistributor.sendToServer(new RemoveJavelinPayload(minecraft.crosshairPickEntity.getId()));
+			}
+		}
+	}
 
 	@SubscribeEvent
 	private static void onRenderLevelStage(RenderLevelStageEvent event) {
@@ -89,7 +102,7 @@ public class AAClientEvents {
 
 						VertexConsumer vertexConsumer = ItemRenderer.getFoilBufferDirect(buffer, RenderType.entityCutoutNoCull(FLAIL_CHAIN_TEXTURE), false, flail.getItem().hasFoil());
 						PoseStack.Pose pose = stack.last();
-						int light = FLAIL_LIGHT.getOrDefault(flail.getId(), FULL_BRIGHT);
+						int light = FLAIL_LIGHT.getOrDefault(flail.getId(), LightTexture.FULL_BRIGHT);
 
 						float start = -1f;
 						float end = length / (width * 11f / 4f) - 1;

@@ -129,11 +129,11 @@ public class AACommonEvents {
 			if (AssortedArmaments.ClientHelper.isShiftKeyDown()) {
 				for (TagKey<Item> key : AAItemTags.TOOLTIP_TAGS) {
 					if (stack.is(key)) {
-						event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + "." + key.location().getPath()).withStyle(ChatFormatting.YELLOW));
+						event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + "." + key.location().getPath()).withStyle(ChatFormatting.BLUE));
 					}
 				}
 			} else if (AAItemTags.TOOLTIP_TAGS.stream().anyMatch(stack::is)) {
-				event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + ".shift").withStyle(ChatFormatting.YELLOW));
+				event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + ".shift").withStyle(ChatFormatting.BLUE));
 			}
 		}
 	}

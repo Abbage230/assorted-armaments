@@ -9,7 +9,7 @@
       "tag": "c:chains"
     },
     "X": {
-      "item": "minecraft:gold_ingot"
+      "tag": "c:ingots/gold"
     }
   },
   "pattern": [
