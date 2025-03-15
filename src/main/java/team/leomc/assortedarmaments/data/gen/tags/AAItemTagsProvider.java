@@ -52,11 +52,21 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 			AAItems.GOLDEN_JAVELIN.get(),
 			AAItems.NETHERITE_JAVELIN.get()
 		);
+		tag(AAItemTags.PIKES).add(
+			AAItems.WOODEN_PIKE.get(),
+			AAItems.STONE_PIKE.get(),
+			AAItems.IRON_PIKE.get(),
+			AAItems.DIAMOND_PIKE.get(),
+			AAItems.GOLDEN_PIKE.get(),
+			AAItems.NETHERITE_PIKE.get()
+		);
 		tag(AAItemTags.TWO_HANDED)
 			.addTag(AAItemTags.CLAYMORES)
-			.addTag(AAItemTags.FLAILS);
+			.addTag(AAItemTags.FLAILS)
+			.addTag(AAItemTags.PIKES);
 		tag(AAItemTags.CAN_BLOCK)
-			.addTag(AAItemTags.CLAYMORES);
+			.addTag(AAItemTags.CLAYMORES)
+			.addTag(AAItemTags.PIKES);
 		tag(AAItemTags.STRONG_SWEEP)
 			.addTag(AAItemTags.CLAYMORES);
 		tag(AAItemTags.ARMOR_BASED_DAMAGE)
@@ -74,23 +84,26 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 			AAItems.IRON_CLAYMORE.get(),
 			AAItems.IRON_MACE.get(),
 			AAItems.IRON_FLAIL.get(),
-			AAItems.IRON_JAVELIN.get()
+			AAItems.IRON_JAVELIN.get(),
+			AAItems.IRON_PIKE.get()
 		);
 		tag(AAItemTags.PIGLINS_CAN_USE).add(
 			AAItems.GOLDEN_CLAYMORE.get(),
 			AAItems.GOLDEN_MACE.get(),
 			AAItems.GOLDEN_FLAIL.get(),
-			AAItems.GOLDEN_JAVELIN.get()
+			AAItems.GOLDEN_JAVELIN.get(),
+			AAItems.GOLDEN_PIKE.get()
 		);
 		tag(ItemTags.SWORDS).addTag(AAItemTags.CLAYMORES);
-		tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS).addTag(AAItemTags.JAVELINS);
-		tag(ItemTags.SWORD_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS).addTag(AAItemTags.JAVELINS);
-		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS).addTag(AAItemTags.JAVELINS);
+		tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS).addTag(AAItemTags.JAVELINS).addTag(AAItemTags.PIKES);
+		tag(ItemTags.SWORD_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS).addTag(AAItemTags.JAVELINS).addTag(AAItemTags.PIKES);
+		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(AAItemTags.MACES).addTag(AAItemTags.FLAILS).addTag(AAItemTags.JAVELINS).addTag(AAItemTags.PIKES);
 		tag(ItemTags.PIGLIN_LOVED).add(
 			AAItems.GOLDEN_CLAYMORE.get(),
 			AAItems.GOLDEN_MACE.get(),
 			AAItems.GOLDEN_FLAIL.get(),
-			AAItems.GOLDEN_JAVELIN.get()
+			AAItems.GOLDEN_JAVELIN.get(),
+			AAItems.GOLDEN_PIKE.get()
 		);
 	}
 }

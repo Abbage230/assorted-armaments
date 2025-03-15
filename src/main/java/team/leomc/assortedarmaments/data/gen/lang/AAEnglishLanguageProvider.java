@@ -41,6 +41,7 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 
 		add("desc." + AssortedArmaments.ID + ".flails", "Can be thrown");
 		add("desc." + AssortedArmaments.ID + ".javelins", "Can be thrown and plunged into an enemy, will also deal damage when removed from the victim");
+		add("desc." + AssortedArmaments.ID + ".pikes", "Increases damage based on speed when sprinting");
 
 		add(AAItems.WOODEN_CLAYMORE.get(), "Wooden Claymore");
 		add(AAItems.STONE_CLAYMORE.get(), "Stone Claymore");
@@ -71,5 +72,12 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 		add(AAItems.GOLDEN_JAVELIN.get(), "Golden Javelin");
 		add(AAItems.NETHERITE_JAVELIN.get(), "Netherite Javelin");
 		add(AAEntityTypes.JAVELIN.get(), "Javelin");
+
+		add(AAItems.WOODEN_PIKE.get(), "Wooden Pike");
+		add(AAItems.STONE_PIKE.get(), "Stone Pike");
+		add(AAItems.IRON_PIKE.get(), "Iron Pike");
+		add(AAItems.DIAMOND_PIKE.get(), "Diamond Pike");
+		add(AAItems.GOLDEN_PIKE.get(), "Golden Pike");
+		add(AAItems.NETHERITE_PIKE.get(), "Netherite Pike");
 	}
 }

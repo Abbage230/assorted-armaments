@@ -5,10 +5,7 @@ import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import team.leomc.assortedarmaments.AssortedArmaments;
-import team.leomc.assortedarmaments.item.ClaymoreItem;
-import team.leomc.assortedarmaments.item.FlailItem;
-import team.leomc.assortedarmaments.item.JavelinItem;
-import team.leomc.assortedarmaments.item.MaceItem;
+import team.leomc.assortedarmaments.item.*;
 
 public class AAItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AssortedArmaments.ID);
@@ -38,10 +35,18 @@ public class AAItems {
 	public static final DeferredItem<FlailItem> NETHERITE_FLAIL = ITEMS.register("netherite_flail", () -> new FlailItem(Tiers.NETHERITE, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.NETHERITE, 6f, -3.2f))));
 
 	// javelins
-	public static final DeferredItem<JavelinItem> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.WOOD, 1f, -2.2f))));
-	public static final DeferredItem<JavelinItem> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.STONE, 1f, -2.2f))));
-	public static final DeferredItem<JavelinItem> IRON_JAVELIN = ITEMS.register("iron_javelin", () -> new JavelinItem(Tiers.IRON, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.IRON, 1f, -2.2f))));
-	public static final DeferredItem<JavelinItem> DIAMOND_JAVELIN = ITEMS.register("diamond_javelin", () -> new JavelinItem(Tiers.DIAMOND, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.DIAMOND, 1f, -2.2f))));
-	public static final DeferredItem<JavelinItem> GOLDEN_JAVELIN = ITEMS.register("golden_javelin", () -> new JavelinItem(Tiers.GOLD, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.GOLD, 1f, -2.2f))));
-	public static final DeferredItem<JavelinItem> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties().attributes(FlailItem.createAttributes(Tiers.NETHERITE, 1f, -2.2f))));
+	public static final DeferredItem<JavelinItem> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties().attributes(JavelinItem.createAttributes(Tiers.WOOD, 1f, -2.2f))));
+	public static final DeferredItem<JavelinItem> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties().attributes(JavelinItem.createAttributes(Tiers.STONE, 1f, -2.2f))));
+	public static final DeferredItem<JavelinItem> IRON_JAVELIN = ITEMS.register("iron_javelin", () -> new JavelinItem(Tiers.IRON, new Item.Properties().attributes(JavelinItem.createAttributes(Tiers.IRON, 1f, -2.2f))));
+	public static final DeferredItem<JavelinItem> DIAMOND_JAVELIN = ITEMS.register("diamond_javelin", () -> new JavelinItem(Tiers.DIAMOND, new Item.Properties().attributes(JavelinItem.createAttributes(Tiers.DIAMOND, 1f, -2.2f))));
+	public static final DeferredItem<JavelinItem> GOLDEN_JAVELIN = ITEMS.register("golden_javelin", () -> new JavelinItem(Tiers.GOLD, new Item.Properties().attributes(JavelinItem.createAttributes(Tiers.GOLD, 1f, -2.2f))));
+	public static final DeferredItem<JavelinItem> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties().attributes(JavelinItem.createAttributes(Tiers.NETHERITE, 1f, -2.2f))));
+
+	// pikes
+	public static final DeferredItem<PikeItem> WOODEN_PIKE = ITEMS.register("wooden_pike", () -> new PikeItem(Tiers.WOOD, new Item.Properties().attributes(PikeItem.createAttributes(Tiers.WOOD, 4f, -2.8f, 1.5f))));
+	public static final DeferredItem<PikeItem> STONE_PIKE = ITEMS.register("stone_pike", () -> new PikeItem(Tiers.STONE, new Item.Properties().attributes(PikeItem.createAttributes(Tiers.STONE, 4f, -2.8f, 1.5f))));
+	public static final DeferredItem<PikeItem> IRON_PIKE = ITEMS.register("iron_pike", () -> new PikeItem(Tiers.IRON, new Item.Properties().attributes(PikeItem.createAttributes(Tiers.IRON, 4f, -2.8f, 1.5f))));
+	public static final DeferredItem<PikeItem> DIAMOND_PIKE = ITEMS.register("diamond_pike", () -> new PikeItem(Tiers.DIAMOND, new Item.Properties().attributes(PikeItem.createAttributes(Tiers.DIAMOND, 4f, -2.8f, 1.5f))));
+	public static final DeferredItem<PikeItem> GOLDEN_PIKE = ITEMS.register("golden_pike", () -> new PikeItem(Tiers.GOLD, new Item.Properties().attributes(PikeItem.createAttributes(Tiers.GOLD, 4f, -2.8f, 1.5f))));
+	public static final DeferredItem<PikeItem> NETHERITE_PIKE = ITEMS.register("netherite_pike", () -> new PikeItem(Tiers.NETHERITE, new Item.Properties().attributes(PikeItem.createAttributes(Tiers.NETHERITE, 4f, -2.8f, 1.5f))));
 }

@@ -48,7 +48,7 @@ public class ClaymoreItem extends SwordItem {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
-		return super.canPerformAction(stack, itemAbility) || itemAbility == ItemAbilities.SHIELD_BLOCK;
+	public boolean canPerformAction(ItemStack stack, ItemAbility ability) {
+		return super.canPerformAction(stack, ability) || ability == ItemAbilities.SHIELD_BLOCK;
 	}
 }

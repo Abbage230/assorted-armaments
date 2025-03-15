@@ -1,6 +1,6 @@
-// 1.21.1	2025-02-23T16:32:30.6155572	Tags for minecraft:item mod id assorted_armaments
+// 1.21.1	2025-03-15T14:51:41.4192709	Tags for minecraft:item mod id assorted_armaments
 8ba001d97407331ee14c585782e5005a21400ff6 data/assorted_armaments/tags/item/armor_based_damage.json
-d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/can_block.json
+689ac2b139dda363b2d21522077b54904bd7a2a4 data/assorted_armaments/tags/item/can_block.json
 f24a559480a18b444e7f297e1003e8167bc0f39a data/assorted_armaments/tags/item/claymores.json
 7afce92566460028195e030448653863cf8cdad4 data/assorted_armaments/tags/item/disabled_when_disabling_blocking.json
 8ba001d97407331ee14c585782e5005a21400ff6 data/assorted_armaments/tags/item/disables_blocking_on_attack.json
@@ -8,12 +8,13 @@ f24a559480a18b444e7f297e1003e8167bc0f39a data/assorted_armaments/tags/item/claym
 d47ebde749a345a9b1581263ca4781e50ef08546 data/assorted_armaments/tags/item/flails.json
 f09afcb8097d3248822f66994070a6e67b694326 data/assorted_armaments/tags/item/javelins.json
 49d8eba27c3286414774334db28149d1407fa619 data/assorted_armaments/tags/item/maces.json
-6c59ff0a50a38076deeff66b9d3f397157405dd2 data/assorted_armaments/tags/item/piglins_can_use.json
+fb69e34c2d8a99ee1a94312ef4877637d73eedc9 data/assorted_armaments/tags/item/piglins_can_use.json
+25cad87252272298696efad8ede2b00f360d2f85 data/assorted_armaments/tags/item/pikes.json
 d500bd43e88c70df0ec4054b266d05b7df7e221e data/assorted_armaments/tags/item/strong_sweep.json
-335deed2e977567a0ea0d27e6a0cfa4ef277caa9 data/assorted_armaments/tags/item/two_handed.json
-919296b487576ced6685d2467f3a042378304b58 data/assorted_armaments/tags/item/zombies_can_use.json
-bcedda8f037a69497aaf98503f2362f9cc2cdc8c data/minecraft/tags/item/enchantable/durability.json
-bcedda8f037a69497aaf98503f2362f9cc2cdc8c data/minecraft/tags/item/enchantable/sharp_weapon.json
-bcedda8f037a69497aaf98503f2362f9cc2cdc8c data/minecraft/tags/item/enchantable/sword.json
-6c59ff0a50a38076deeff66b9d3f397157405dd2 data/minecraft/tags/item/piglin_loved.json
+d891f5aea39d51eb2a5eb82a2a86a03578bea587 data/assorted_armaments/tags/item/two_handed.json
+04ab1d3a434311c03c76bb1ac49c46976f572ed0 data/assorted_armaments/tags/item/zombies_can_use.json
+8e516ebf2b7c086915b34a56691a391e3b2af284 data/minecraft/tags/item/enchantable/durability.json
+8e516ebf2b7c086915b34a56691a391e3b2af284 data/minecraft/tags/item/enchantable/sharp_weapon.json
+8e516ebf2b7c086915b34a56691a391e3b2af284 data/minecraft/tags/item/enchantable/sword.json
+fb69e34c2d8a99ee1a94312ef4877637d73eedc9 data/minecraft/tags/item/piglin_loved.json
 d500bd43e88c70df0ec4054b266d05b7df7e221e data/minecraft/tags/item/swords.json

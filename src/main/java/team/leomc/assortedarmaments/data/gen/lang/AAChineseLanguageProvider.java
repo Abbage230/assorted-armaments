@@ -41,6 +41,7 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 
 		add("desc." + AssortedArmaments.ID + ".flails", "可投掷");
 		add("desc." + AssortedArmaments.ID + ".javelins", "可投掷并插入敌人体内，从受害者身上拔出时也会造成伤害");
+		add("desc." + AssortedArmaments.ID + ".pikes", "疾跑时根据速度增加伤害");
 
 		add(AAItems.WOODEN_CLAYMORE.get(), "木大剑");
 		add(AAItems.STONE_CLAYMORE.get(), "石大剑");
@@ -71,5 +72,12 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 		add(AAItems.GOLDEN_JAVELIN.get(), "金标枪");
 		add(AAItems.NETHERITE_JAVELIN.get(), "下界合金标枪");
 		add(AAEntityTypes.JAVELIN.get(), "标枪");
+
+		add(AAItems.WOODEN_PIKE.get(), "木长枪");
+		add(AAItems.STONE_PIKE.get(), "石长枪");
+		add(AAItems.IRON_PIKE.get(), "铁长枪");
+		add(AAItems.DIAMOND_PIKE.get(), "钻石长枪");
+		add(AAItems.GOLDEN_PIKE.get(), "金长枪");
+		add(AAItems.NETHERITE_PIKE.get(), "下界合金长枪");
 	}
 }

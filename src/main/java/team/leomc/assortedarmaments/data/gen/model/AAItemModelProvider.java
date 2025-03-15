@@ -70,6 +70,19 @@ public class AAItemModelProvider extends ItemModelProvider {
 		thrownJavelin(AAItems.GOLDEN_JAVELIN.get());
 		javelin(AAItems.NETHERITE_JAVELIN.get());
 		thrownJavelin(AAItems.NETHERITE_JAVELIN.get());
+
+		pike(AAItems.WOODEN_PIKE.get());
+		inventoryHandheld(AAItems.WOODEN_PIKE.get());
+		pike(AAItems.STONE_PIKE.get());
+		inventoryHandheld(AAItems.STONE_PIKE.get());
+		pike(AAItems.IRON_PIKE.get());
+		inventoryHandheld(AAItems.IRON_PIKE.get());
+		pike(AAItems.DIAMOND_PIKE.get());
+		inventoryHandheld(AAItems.DIAMOND_PIKE.get());
+		pike(AAItems.GOLDEN_PIKE.get());
+		inventoryHandheld(AAItems.GOLDEN_PIKE.get());
+		pike(AAItems.NETHERITE_PIKE.get());
+		inventoryHandheld(AAItems.NETHERITE_PIKE.get());
 	}
 
 	private void claymore(Item item) {
@@ -132,6 +145,17 @@ public class AAItemModelProvider extends ItemModelProvider {
 		return getBuilder(item.toString() + "_inventory")
 			.parent(new ModelFile.UncheckedModelFile("item/handheld"))
 			.texture("layer0", itemTexture(item) + "_inventory");
+	}
+
+	private void pike(Item item) {
+		ModelFile blocking = withExistingParent(name(item) + "_blocking", AssortedArmaments.id("item/pike_blocking"))
+			.texture("layer0", itemTexture(item));
+		ModelFile sprinting = withExistingParent(name(item) + "_sprinting", AssortedArmaments.id("item/pike_sprinting"))
+			.texture("layer0", itemTexture(item));
+		withExistingParent(name(item), AssortedArmaments.id("item/pike"))
+			.texture("layer0", itemTexture(item))
+			.override().predicate(AssortedArmaments.id("blocking"), 1).model(blocking).end()
+			.override().predicate(AssortedArmaments.id("sprinting"), 1).predicate(AssortedArmaments.id("blocking"), 0).model(sprinting).end();
 	}
 
 	public ResourceLocation texture(ResourceLocation key, String prefix) {

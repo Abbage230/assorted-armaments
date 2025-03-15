@@ -50,27 +50,38 @@ public class AARecipeProvider extends RecipeProvider {
 		javelin(recipeOutput, AAItems.GOLDEN_JAVELIN.get(), Tags.Items.INGOTS_GOLD);
 		netheriteSmithing(recipeOutput, AAItems.DIAMOND_JAVELIN.get(), RecipeCategory.COMBAT, AAItems.NETHERITE_JAVELIN.get());
 
+		pike(recipeOutput, AAItems.WOODEN_PIKE.get(), ItemTags.PLANKS);
+		pike(recipeOutput, AAItems.STONE_PIKE.get(), ItemTags.STONE_TOOL_MATERIALS);
+		pike(recipeOutput, AAItems.IRON_PIKE.get(), Tags.Items.INGOTS_IRON);
+		pike(recipeOutput, AAItems.DIAMOND_PIKE.get(), Tags.Items.GEMS_DIAMOND);
+		pike(recipeOutput, AAItems.GOLDEN_PIKE.get(), Tags.Items.INGOTS_GOLD);
+		netheriteSmithing(recipeOutput, AAItems.DIAMOND_PIKE.get(), RecipeCategory.COMBAT, AAItems.NETHERITE_PIKE.get());
+
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(
 				AAItems.GOLDEN_CLAYMORE.get(),
 				AAItems.GOLDEN_MACE.get(),
 				AAItems.GOLDEN_FLAIL.get(),
-				AAItems.GOLDEN_JAVELIN.get()
+				AAItems.GOLDEN_JAVELIN.get(),
+				AAItems.GOLDEN_PIKE.get()
 			), RecipeCategory.MISC, Items.GOLD_NUGGET, 0.1F, 200)
 			.unlockedBy("has_golden_claymore", has(AAItems.GOLDEN_CLAYMORE.get()))
 			.unlockedBy("has_golden_mace", has(AAItems.GOLDEN_MACE.get()))
 			.unlockedBy("has_golden_flail", has(AAItems.GOLDEN_FLAIL.get()))
 			.unlockedBy("has_golden_javelin", has(AAItems.GOLDEN_JAVELIN.get()))
+			.unlockedBy("has_golden_pike", has(AAItems.GOLDEN_PIKE.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.GOLD_NUGGET)));
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(
 				AAItems.IRON_CLAYMORE.get(),
 				AAItems.IRON_MACE.get(),
 				AAItems.IRON_FLAIL.get(),
-				AAItems.IRON_JAVELIN.get()
+				AAItems.IRON_JAVELIN.get(),
+				AAItems.IRON_PIKE.get()
 			), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1F, 200)
 			.unlockedBy("has_iron_claymore", has(AAItems.IRON_CLAYMORE.get()))
 			.unlockedBy("has_iron_mace", has(AAItems.IRON_MACE.get()))
 			.unlockedBy("has_iron_flail", has(AAItems.IRON_FLAIL.get()))
 			.unlockedBy("has_iron_javelin", has(AAItems.IRON_JAVELIN.get()))
+			.unlockedBy("has_iron_pike", has(AAItems.IRON_PIKE.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.IRON_NUGGET)));
 	}
 
@@ -118,6 +129,17 @@ public class AARecipeProvider extends RecipeProvider {
 			.pattern("  X")
 			.pattern(" X ")
 			.pattern("X  ")
+			.unlockedBy("has_item", has(input))
+			.save(recipeOutput);
+	}
+
+	protected void pike(RecipeOutput recipeOutput, ItemLike output, TagKey<Item> input) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output)
+			.define('X', input)
+			.define('#', Tags.Items.RODS_WOODEN)
+			.pattern("  X")
+			.pattern(" # ")
+			.pattern("#  ")
 			.unlockedBy("has_item", has(input))
 			.save(recipeOutput);
 	}

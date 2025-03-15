@@ -6,6 +6,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -15,6 +17,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
+import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -41,16 +46,28 @@ public class AACommonEvents {
 	@SubscribeEvent
 	private static void onJoinLevel(EntityJoinLevelEvent event) {
 		if (event.getEntity() instanceof LivingEntity living) {
+			Level level = event.getLevel();
+			RandomSource random = level.getRandom();
+			DifficultyInstance difficulty = level.getCurrentDifficultyAt(living.blockPosition());
+			double enchantChance = 0.25 * difficulty.getSpecialMultiplier();
 			if (living.getType().is(AAEntityTypeTags.ZOMBIES) && living.getRandom().nextFloat() < AACommonConfig.zombieUseWeaponChance) {
 				Optional<Holder<Item>> weapon = BuiltInRegistries.ITEM.getRandomElementOf(AAItemTags.ZOMBIES_CAN_USE, living.getRandom());
 				if (weapon.isPresent() && weapon.get().isBound()) {
-					living.setItemInHand(InteractionHand.MAIN_HAND, weapon.get().value().getDefaultInstance());
+					ItemStack stack = weapon.get().value().getDefaultInstance();
+					if (!stack.isEmpty() && random.nextFloat() < enchantChance) {
+						EnchantmentHelper.enchantItemFromProvider(stack, level.registryAccess(), VanillaEnchantmentProviders.MOB_SPAWN_EQUIPMENT, difficulty, random);
+					}
+					living.setItemInHand(InteractionHand.MAIN_HAND, stack);
 				}
 			}
 			if (living.getType().is(AAEntityTypeTags.PIGLINS) && living.getRandom().nextFloat() < AACommonConfig.piglinUseWeaponChance) {
 				Optional<Holder<Item>> weapon = BuiltInRegistries.ITEM.getRandomElementOf(AAItemTags.PIGLINS_CAN_USE, living.getRandom());
 				if (weapon.isPresent() && weapon.get().isBound()) {
-					living.setItemInHand(InteractionHand.MAIN_HAND, weapon.get().value().getDefaultInstance());
+					ItemStack stack = weapon.get().value().getDefaultInstance();
+					if (!stack.isEmpty() && random.nextFloat() < enchantChance) {
+						EnchantmentHelper.enchantItemFromProvider(stack, level.registryAccess(), VanillaEnchantmentProviders.MOB_SPAWN_EQUIPMENT, difficulty, random);
+					}
+					living.setItemInHand(InteractionHand.MAIN_HAND, stack);
 				}
 			}
 		}

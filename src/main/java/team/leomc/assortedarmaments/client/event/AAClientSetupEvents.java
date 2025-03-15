@@ -100,6 +100,42 @@ public class AAClientSetupEvents {
 		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("stone_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory"))
 		))
 	));
 
@@ -140,6 +176,20 @@ public class AAClientSetupEvents {
 			ItemProperties.register(AAItems.DIAMOND_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.GOLDEN_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.NETHERITE_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+
+			ItemProperties.register(AAItems.WOODEN_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.STONE_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.IRON_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.GOLDEN_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.NETHERITE_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+
+			ItemProperties.register(AAItems.WOODEN_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.STONE_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.IRON_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.GOLDEN_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.NETHERITE_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
 		});
 	}
 
