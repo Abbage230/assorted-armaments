@@ -10,12 +10,16 @@ public class AACommonConfig {
 	private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
 	private static final ModConfigSpec.DoubleValue BLOCK_WALK_SPEED_MODIFIER = BUILDER
-		.comment("Player's walk speed when blocking with a weapon = (1 - blockWalkSpeedModifier) * originalSpeed")
+		.comment("Player's walk speed when blocking with a weapon = (1 - blockWalkSpeedModifier) * original speed")
 		.defineInRange("blockWalkSpeedModifier", 0.25, 0, 1);
 
 	private static final ModConfigSpec.DoubleValue ARMOR_BASED_ATTACK_DAMAGE_PERCENTAGE = BUILDER
-		.comment("Damage caused when attacking with a weapon that deals damage according to the target's armor value = originalDamage + armorBasedAttackDamagePercentage * target's armorValue")
+		.comment("Damage caused when attacking with a weapon that deals damage according to the target's armor value = original damage + armorBasedAttackDamagePercentage * target's armor value")
 		.defineInRange("armorBasedAttackDamagePercentage", 0.25, 0, Double.MAX_VALUE);
+
+	private static final ModConfigSpec.DoubleValue SPEED_BASED_ATTACK_DAMAGE_MODIFIER = BUILDER
+		.comment("Damage caused when attacking with a weapon that deals damage according to the attacker's movement speed = original damage + speedBasedAttackDamageModifier * attacker's movement speed")
+		.defineInRange("speedBasedAttackDamageModifier", 10, 0, Double.MAX_VALUE);
 
 	private static final ModConfigSpec.IntValue FLAIL_MAX_USE_DURATION = BUILDER
 		.comment("How long can the player use a flail? (in ticks, 20 tick = 1 second)")
@@ -30,11 +34,11 @@ public class AACommonConfig {
 		.defineInRange("flailSpinCooldown", 40, 0, Integer.MAX_VALUE);
 
 	private static final ModConfigSpec.DoubleValue FLAIL_SPIN_DAMAGE_FACTOR = BUILDER
-		.comment("Damage caused when attacking with a spinning flail = originalDamage * flailSpinDamageFactor")
+		.comment("Damage caused when attacking with a spinning flail = original damage * flailSpinDamageFactor")
 		.defineInRange("flailSpinDamageFactor", 0.1, 0, 1);
 
 	private static final ModConfigSpec.DoubleValue FLAIL_SPIN_KNOCKBACK_FACTOR = BUILDER
-		.comment("Knockback caused when attacking with a spinning flail = originalKnockback * flailSpinKnockbackFactor")
+		.comment("Knockback caused when attacking with a spinning flail = original knockback * flailSpinKnockbackFactor")
 		.defineInRange("flailSpinKnockbackFactor", 0.1, 0, 1);
 
 	private static final ModConfigSpec.DoubleValue ZOMBIE_USE_WEAPON_CHANCE = BUILDER
@@ -49,6 +53,7 @@ public class AACommonConfig {
 
 	public static double blockWalkSpeedModifier;
 	public static double armorBasedAttackDamagePercentage;
+	public static double speedBasedAttackDamageModifier;
 	public static int flailMaxUseDuration;
 	public static int flailThrowMinUseDuration;
 	public static int flailSpinCooldown;
@@ -61,6 +66,7 @@ public class AACommonConfig {
 	private static void onLoad(final ModConfigEvent event) {
 		blockWalkSpeedModifier = BLOCK_WALK_SPEED_MODIFIER.get();
 		armorBasedAttackDamagePercentage = ARMOR_BASED_ATTACK_DAMAGE_PERCENTAGE.get();
+		speedBasedAttackDamageModifier = SPEED_BASED_ATTACK_DAMAGE_MODIFIER.get();
 		flailMaxUseDuration = FLAIL_MAX_USE_DURATION.get();
 		flailThrowMinUseDuration = FLAIL_THROW_MIN_USE_DURATION.get();
 		flailSpinCooldown = FLAIL_SPIN_COOLDOWN.get();

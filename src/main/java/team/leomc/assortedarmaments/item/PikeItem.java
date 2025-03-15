@@ -2,8 +2,6 @@ package team.leomc.assortedarmaments.item;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -48,15 +46,6 @@ public class PikeItem extends SwordItem {
 		player.startUsingItem(hand);
 		player.setSprinting(false);
 		return InteractionResultHolder.consume(stack);
-	}
-
-	@Override
-	public float getAttackDamageBonus(Entity target, float damage, DamageSource damageSource) {
-		Entity directEntity = damageSource.getDirectEntity();
-		if (directEntity instanceof LivingEntity living && living.isSprinting() && living.onGround()) {
-			return (float) (living.getKnownMovement().length() * 10);
-		}
-		return super.getAttackDamageBonus(target, damage, damageSource);
 	}
 
 	@Override

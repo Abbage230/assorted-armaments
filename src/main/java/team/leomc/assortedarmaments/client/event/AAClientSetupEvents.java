@@ -65,17 +65,17 @@ public class AAClientSetupEvents {
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory"))
 		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_claymore")), Map.of(
-			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
-			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
-			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
-			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory"))
-		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_claymore")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory"))
 		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
@@ -92,11 +92,11 @@ public class AAClientSetupEvents {
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_flail"))
 		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_flail")), Map.of(
-			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail"))
-		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_flail"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_flail")), Map.of(
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail"))
 		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_flail"))
@@ -119,17 +119,17 @@ public class AAClientSetupEvents {
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory"))
 		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_pike")), Map.of(
-			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
-			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
-			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
-			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory"))
-		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory"))
+		)),
+		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_pike")), Map.of(
+			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
+			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
+			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
+			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory"))
 		)),
 		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
@@ -143,14 +143,14 @@ public class AAClientSetupEvents {
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_flail_thrown")),
-		ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_flail_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_javelin_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_javelin_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_javelin_thrown")),
-		ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_javelin_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_javelin_thrown")),
+		ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_javelin_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_javelin_thrown"))
 	));
 
@@ -166,30 +166,37 @@ public class AAClientSetupEvents {
 			ItemProperties.register(AAItems.WOODEN_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.STONE_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.IRON_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
-			ItemProperties.register(AAItems.DIAMOND_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.GOLDEN_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.NETHERITE_CLAYMORE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 
 			ItemProperties.register(AAItems.WOODEN_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.STONE_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.IRON_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
-			ItemProperties.register(AAItems.DIAMOND_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.GOLDEN_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.NETHERITE_FLAIL.get(), AssortedArmaments.id("spinning"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 
 			ItemProperties.register(AAItems.WOODEN_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.STONE_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.IRON_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
-			ItemProperties.register(AAItems.DIAMOND_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.GOLDEN_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 			ItemProperties.register(AAItems.NETHERITE_PIKE.get(), AssortedArmaments.id("blocking"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1 : 0);
 
 			ItemProperties.register(AAItems.WOODEN_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
 			ItemProperties.register(AAItems.STONE_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
 			ItemProperties.register(AAItems.IRON_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
-			ItemProperties.register(AAItems.DIAMOND_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
 			ItemProperties.register(AAItems.GOLDEN_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
 			ItemProperties.register(AAItems.NETHERITE_PIKE.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+
+			ItemProperties.register(AAItems.WOODEN_RAPIER.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.STONE_RAPIER.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.IRON_RAPIER.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.GOLDEN_RAPIER.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.DIAMOND_RAPIER.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
+			ItemProperties.register(AAItems.NETHERITE_RAPIER.get(), AssortedArmaments.id("sprinting"), (itemStack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.getMainHandItem() == itemStack && livingEntity.isSprinting() ? 1 : 0);
 		});
 	}
 

@@ -51,6 +51,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_iron_rapier": {
+      "conditions": {
+        "items": [
+          {
+            "items": "assorted_armaments:iron_rapier"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "assorted_armaments:iron_nugget_from_smelting"
@@ -65,7 +75,8 @@
       "has_iron_mace",
       "has_iron_flail",
       "has_iron_javelin",
-      "has_iron_pike"
+      "has_iron_pike",
+      "has_iron_rapier"
     ]
   ],
   "rewards": {

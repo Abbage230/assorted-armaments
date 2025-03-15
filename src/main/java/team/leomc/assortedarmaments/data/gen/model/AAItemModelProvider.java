@@ -25,18 +25,18 @@ public class AAItemModelProvider extends ItemModelProvider {
 		inventoryHandheld(AAItems.STONE_CLAYMORE.get());
 		claymore(AAItems.IRON_CLAYMORE.get());
 		inventoryHandheld(AAItems.IRON_CLAYMORE.get());
-		claymore(AAItems.DIAMOND_CLAYMORE.get());
-		inventoryHandheld(AAItems.DIAMOND_CLAYMORE.get());
 		claymore(AAItems.GOLDEN_CLAYMORE.get());
 		inventoryHandheld(AAItems.GOLDEN_CLAYMORE.get());
+		claymore(AAItems.DIAMOND_CLAYMORE.get());
+		inventoryHandheld(AAItems.DIAMOND_CLAYMORE.get());
 		claymore(AAItems.NETHERITE_CLAYMORE.get());
 		inventoryHandheld(AAItems.NETHERITE_CLAYMORE.get());
 
 		handheld(AAItems.WOODEN_MACE.get());
 		handheld(AAItems.STONE_MACE.get());
 		handheld(AAItems.IRON_MACE.get());
-		handheld(AAItems.DIAMOND_MACE.get());
 		handheld(AAItems.GOLDEN_MACE.get());
+		handheld(AAItems.DIAMOND_MACE.get());
 		handheld(AAItems.NETHERITE_MACE.get());
 
 		flail(AAItems.WOODEN_FLAIL.get());
@@ -48,12 +48,12 @@ public class AAItemModelProvider extends ItemModelProvider {
 		flail(AAItems.IRON_FLAIL.get());
 		spinningFlail(AAItems.IRON_FLAIL.get());
 		thrownFlail(AAItems.IRON_FLAIL.get());
-		flail(AAItems.DIAMOND_FLAIL.get());
-		spinningFlail(AAItems.DIAMOND_FLAIL.get());
-		thrownFlail(AAItems.DIAMOND_FLAIL.get());
 		flail(AAItems.GOLDEN_FLAIL.get());
 		spinningFlail(AAItems.GOLDEN_FLAIL.get());
 		thrownFlail(AAItems.GOLDEN_FLAIL.get());
+		flail(AAItems.DIAMOND_FLAIL.get());
+		spinningFlail(AAItems.DIAMOND_FLAIL.get());
+		thrownFlail(AAItems.DIAMOND_FLAIL.get());
 		flail(AAItems.NETHERITE_FLAIL.get());
 		spinningFlail(AAItems.NETHERITE_FLAIL.get());
 		thrownFlail(AAItems.NETHERITE_FLAIL.get());
@@ -64,10 +64,10 @@ public class AAItemModelProvider extends ItemModelProvider {
 		thrownJavelin(AAItems.STONE_JAVELIN.get());
 		javelin(AAItems.IRON_JAVELIN.get());
 		thrownJavelin(AAItems.IRON_JAVELIN.get());
-		javelin(AAItems.DIAMOND_JAVELIN.get());
-		thrownJavelin(AAItems.DIAMOND_JAVELIN.get());
 		javelin(AAItems.GOLDEN_JAVELIN.get());
 		thrownJavelin(AAItems.GOLDEN_JAVELIN.get());
+		javelin(AAItems.DIAMOND_JAVELIN.get());
+		thrownJavelin(AAItems.DIAMOND_JAVELIN.get());
 		javelin(AAItems.NETHERITE_JAVELIN.get());
 		thrownJavelin(AAItems.NETHERITE_JAVELIN.get());
 
@@ -77,12 +77,19 @@ public class AAItemModelProvider extends ItemModelProvider {
 		inventoryHandheld(AAItems.STONE_PIKE.get());
 		pike(AAItems.IRON_PIKE.get());
 		inventoryHandheld(AAItems.IRON_PIKE.get());
-		pike(AAItems.DIAMOND_PIKE.get());
-		inventoryHandheld(AAItems.DIAMOND_PIKE.get());
 		pike(AAItems.GOLDEN_PIKE.get());
 		inventoryHandheld(AAItems.GOLDEN_PIKE.get());
+		pike(AAItems.DIAMOND_PIKE.get());
+		inventoryHandheld(AAItems.DIAMOND_PIKE.get());
 		pike(AAItems.NETHERITE_PIKE.get());
 		inventoryHandheld(AAItems.NETHERITE_PIKE.get());
+
+		rapier(AAItems.WOODEN_RAPIER.get());
+		rapier(AAItems.STONE_RAPIER.get());
+		rapier(AAItems.IRON_RAPIER.get());
+		rapier(AAItems.GOLDEN_RAPIER.get());
+		rapier(AAItems.DIAMOND_RAPIER.get());
+		rapier(AAItems.NETHERITE_RAPIER.get());
 	}
 
 	private void claymore(Item item) {
@@ -156,6 +163,14 @@ public class AAItemModelProvider extends ItemModelProvider {
 			.texture("layer0", itemTexture(item))
 			.override().predicate(AssortedArmaments.id("blocking"), 1).model(blocking).end()
 			.override().predicate(AssortedArmaments.id("sprinting"), 1).predicate(AssortedArmaments.id("blocking"), 0).model(sprinting).end();
+	}
+
+	private void rapier(Item item) {
+		ModelFile sprinting = withExistingParent(name(item) + "_sprinting", AssortedArmaments.id("item/handheld_sprinting"))
+			.texture("layer0", itemTexture(item));
+		withExistingParent(name(item), "item/handheld")
+			.texture("layer0", itemTexture(item))
+			.override().predicate(AssortedArmaments.id("sprinting"), 1).model(sprinting).end();
 	}
 
 	public ResourceLocation texture(ResourceLocation key, String prefix) {

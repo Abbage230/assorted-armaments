@@ -23,6 +23,7 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 
 		add(AssortedArmaments.ID + ".configuration.blockWalkSpeedModifier", "Block Walk Speed Modifier");
 		add(AssortedArmaments.ID + ".configuration.armorBasedAttackDamagePercentage", "Armor Based Attack Damage Percentage");
+		add(AssortedArmaments.ID + ".configuration.speedBasedAttackDamagePercentage", "Speed Based Attack Damage Modifier");
 		add(AssortedArmaments.ID + ".configuration.flailMaxUseDuration", "Maximum Flail Use Duration");
 		add(AssortedArmaments.ID + ".configuration.flailThrowMinUseDuration", "Minimum Use Duration to Throw a Flail");
 		add(AssortedArmaments.ID + ".configuration.flailSpinCooldown", "Flail Spin Cooldown");
@@ -38,46 +39,54 @@ public class AAEnglishLanguageProvider extends LanguageProvider {
 		add("desc." + AssortedArmaments.ID + ".armor_based_damage", "Deals extra damage to enemies with armor");
 		add("desc." + AssortedArmaments.ID + ".disables_blocking_on_attack", "Disables the target's ability to block");
 		add("desc." + AssortedArmaments.ID + ".extra_knockback", "Deals extra knockback");
+		add("desc." + AssortedArmaments.ID + ".speed_based_damage", "Increases damage based on speed when sprinting");
 
 		add("desc." + AssortedArmaments.ID + ".flails", "Can be thrown");
 		add("desc." + AssortedArmaments.ID + ".javelins", "Can be thrown and plunged into an enemy, will also deal damage when removed from the victim");
-		add("desc." + AssortedArmaments.ID + ".pikes", "Increases damage based on speed when sprinting");
+		add("desc." + AssortedArmaments.ID + ".rapiers", "Continuously attacking the same target gradually increases the damage");
 
 		add(AAItems.WOODEN_CLAYMORE.get(), "Wooden Claymore");
 		add(AAItems.STONE_CLAYMORE.get(), "Stone Claymore");
 		add(AAItems.IRON_CLAYMORE.get(), "Iron Claymore");
-		add(AAItems.DIAMOND_CLAYMORE.get(), "Diamond Claymore");
 		add(AAItems.GOLDEN_CLAYMORE.get(), "Golden Claymore");
+		add(AAItems.DIAMOND_CLAYMORE.get(), "Diamond Claymore");
 		add(AAItems.NETHERITE_CLAYMORE.get(), "Netherite Claymore");
 
 		add(AAItems.WOODEN_MACE.get(), "Wooden Mace");
 		add(AAItems.STONE_MACE.get(), "Stone Mace");
 		add(AAItems.IRON_MACE.get(), "Iron Mace");
-		add(AAItems.DIAMOND_MACE.get(), "Diamond Mace");
 		add(AAItems.GOLDEN_MACE.get(), "Golden Mace");
+		add(AAItems.DIAMOND_MACE.get(), "Diamond Mace");
 		add(AAItems.NETHERITE_MACE.get(), "Netherite Mace");
 
 		add(AAItems.WOODEN_FLAIL.get(), "Wooden Flail");
 		add(AAItems.STONE_FLAIL.get(), "Stone Flail");
 		add(AAItems.IRON_FLAIL.get(), "Iron Flail");
-		add(AAItems.DIAMOND_FLAIL.get(), "Diamond Flail");
 		add(AAItems.GOLDEN_FLAIL.get(), "Golden Flail");
+		add(AAItems.DIAMOND_FLAIL.get(), "Diamond Flail");
 		add(AAItems.NETHERITE_FLAIL.get(), "Netherite Flail");
 		add(AAEntityTypes.FLAIL.get(), "Flail");
 
 		add(AAItems.WOODEN_JAVELIN.get(), "Wooden Javelin");
 		add(AAItems.STONE_JAVELIN.get(), "Stone Javelin");
 		add(AAItems.IRON_JAVELIN.get(), "Iron Javelin");
-		add(AAItems.DIAMOND_JAVELIN.get(), "Diamond Javelin");
 		add(AAItems.GOLDEN_JAVELIN.get(), "Golden Javelin");
+		add(AAItems.DIAMOND_JAVELIN.get(), "Diamond Javelin");
 		add(AAItems.NETHERITE_JAVELIN.get(), "Netherite Javelin");
 		add(AAEntityTypes.JAVELIN.get(), "Javelin");
 
 		add(AAItems.WOODEN_PIKE.get(), "Wooden Pike");
 		add(AAItems.STONE_PIKE.get(), "Stone Pike");
 		add(AAItems.IRON_PIKE.get(), "Iron Pike");
-		add(AAItems.DIAMOND_PIKE.get(), "Diamond Pike");
 		add(AAItems.GOLDEN_PIKE.get(), "Golden Pike");
+		add(AAItems.DIAMOND_PIKE.get(), "Diamond Pike");
 		add(AAItems.NETHERITE_PIKE.get(), "Netherite Pike");
+
+		add(AAItems.WOODEN_RAPIER.get(), "Wooden Rapier");
+		add(AAItems.STONE_RAPIER.get(), "Stone Rapier");
+		add(AAItems.IRON_RAPIER.get(), "Iron Rapier");
+		add(AAItems.GOLDEN_RAPIER.get(), "Golden Rapier");
+		add(AAItems.DIAMOND_RAPIER.get(), "Diamond Rapier");
+		add(AAItems.NETHERITE_RAPIER.get(), "Netherite Rapier");
 	}
 }

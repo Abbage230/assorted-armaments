@@ -32,6 +32,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import team.leomc.assortedarmaments.AACommonConfig;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.entity.ConcentratedAttacker;
 import team.leomc.assortedarmaments.network.UpdateBlockAbilityPayload;
 import team.leomc.assortedarmaments.tags.AAEntityTypeTags;
 import team.leomc.assortedarmaments.tags.AAItemTags;
@@ -79,6 +80,9 @@ public class AACommonEvents {
 		if (event.getSource().getDirectEntity() instanceof LivingEntity living) {
 			if (living.getWeaponItem().is(AAItemTags.ARMOR_BASED_DAMAGE)) {
 				event.setAmount((float) (event.getAmount() + victim.getArmorValue() * AACommonConfig.armorBasedAttackDamagePercentage));
+			}
+			if (living.getWeaponItem().is(AAItemTags.SPEED_BASED_DAMAGE) && living.isSprinting() && living.onGround()) {
+				event.setAmount((float) (event.getAmount() + living.getKnownMovement().length() * AACommonConfig.speedBasedAttackDamageModifier));
 			}
 			if (living.isUsingItem() && living.getUseItem().is(AAItemTags.FLAILS)) {
 				event.setAmount(event.getAmount() * 0.1f * Math.min((living.getTicksUsingItem() / 20f), 5));
@@ -135,6 +139,9 @@ public class AACommonEvents {
 						speedInstance.removeModifier(getBlockSpeedModifier().id());
 					}
 				}
+			}
+			if (living instanceof ConcentratedAttacker concentrated && concentrated.getConcentrationLevel() > 0 && (living.tickCount - concentrated.getLastConcentratedAttackTime() > 40 || living.getWeaponItem() != concentrated.getConcentratedWeapon())) {
+				concentrated.clearConcentrationData();
 			}
 		}
 	}
