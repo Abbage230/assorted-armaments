@@ -1,11 +1,14 @@
 package team.leomc.assortedarmaments.entity;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
@@ -26,7 +30,6 @@ import team.leomc.assortedarmaments.registry.AAItems;
 import java.util.UUID;
 
 public class ThrownJavelin extends AbstractArrow {
-	private static final String TAG_ITEM = "hit_target";
 	private static final String TAG_HIT_TARGET = "hit_target";
 	private static final String TAG_TARGET = "target";
 	private static final String TAG_IN_TARGET = "in_target";
@@ -105,6 +108,7 @@ public class ThrownJavelin extends AbstractArrow {
 
 	public ThrownJavelin(Level level, LivingEntity shooter, ItemStack pickupItemStack) {
 		super(AAEntityTypes.JAVELIN.get(), shooter, level, pickupItemStack, pickupItemStack);
+		setItem(pickupItemStack);
 	}
 
 	@Override
@@ -136,6 +140,9 @@ public class ThrownJavelin extends AbstractArrow {
 			super.tick();
 		}
 		if (!level().isClientSide) {
+			if (tickCount % 5 == 0) {
+				setItem(getItem());
+			}
 			if (target == null && targetId != null) {
 				Entity entity = ((ServerLevel) this.level()).getEntity(targetId);
 				if (entity != null) {
@@ -195,6 +202,14 @@ public class ThrownJavelin extends AbstractArrow {
 	}
 
 	@Override
+	public InteractionResult interact(Player player, InteractionHand hand) {
+		if (!level().isClientSide && removeFromTarget(player)) {
+			return InteractionResult.CONSUME;
+		}
+		return super.interact(player, hand);
+	}
+
+	@Override
 	public void playerTouch(Player player) {
 		if (!isInTarget() && hitTarget) {
 			super.playerTouch(player);
@@ -244,15 +259,34 @@ public class ThrownJavelin extends AbstractArrow {
 		}
 	}
 
+	private double getItemDamage(double baseValue) {
+		double result = baseValue;
+		ItemAttributeModifiers modifiers = getItem().getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
+		for (ItemAttributeModifiers.Entry entry : modifiers.modifiers()) {
+			if (entry.attribute() == Attributes.ATTACK_DAMAGE) {
+				double amount = entry.modifier().amount();
+				double addition;
+				switch (entry.modifier().operation()) {
+					case ADD_VALUE -> addition = amount;
+					case ADD_MULTIPLIED_BASE -> addition = amount * baseValue;
+					case ADD_MULTIPLIED_TOTAL -> addition = amount * result;
+					default -> throw new MatchException(null, null);
+				}
+				result += addition;
+			}
+		}
+		return result;
+	}
+
 	private boolean damageTarget(Entity entity, DamageSource source, float scale, boolean doKnockback) {
 		// a tricky way to use melee weapon enchantments
 		DamageSource directSource = getPlayerOwner() != null ? this.damageSources().playerAttack(this.getPlayerOwner()) : (getOwner() instanceof LivingEntity living ? damageSources().mobAttack(living) : damageSources().thrown(this, getOwner()));
-		float damage = getOwner() instanceof LivingEntity living && living.getAttributes().hasAttribute(Attributes.ATTACK_DAMAGE) ? (float) living.getAttributeValue(Attributes.ATTACK_DAMAGE) : 5;
+		float damage = (float) getItemDamage(getOwner() instanceof LivingEntity living && living.getAttributes().hasAttribute(Attributes.ATTACK_DAMAGE) ? (float) living.getAttributeBaseValue(Attributes.ATTACK_DAMAGE) : 1);
 		float knockback = getOwner() instanceof LivingEntity living && living.getAttributes().hasAttribute(Attributes.ATTACK_KNOCKBACK) ? calculateKnockback(living, entity, directSource) : 1;
-		damage *= scale;
 		if (level() instanceof ServerLevel serverLevel && getWeaponItem() != null) {
 			damage = EnchantmentHelper.modifyDamage(serverLevel, getWeaponItem(), entity, directSource, damage);
 		}
+		damage *= scale;
 		boolean flag = entity.hurt(source, damage);
 		if (flag && level() instanceof ServerLevel serverLevel) {
 			EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, entity, directSource, getWeaponItem());
@@ -290,11 +324,7 @@ public class ThrownJavelin extends AbstractArrow {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		if (compound.contains(TAG_ITEM, CompoundTag.TAG_COMPOUND)) {
-			this.setItem(ItemStack.parse(this.registryAccess(), compound.getCompound(TAG_ITEM)).orElseGet(() -> new ItemStack(AAItems.WOODEN_JAVELIN.get())));
-		} else {
-			this.setItem(new ItemStack(AAItems.WOODEN_JAVELIN.get()));
-		}
+		this.setItem(getPickupItemStackOrigin());
 		this.hitTarget = compound.getBoolean(TAG_HIT_TARGET);
 		if (compound.hasUUID(TAG_TARGET)) {
 			targetId = compound.getUUID(TAG_TARGET);
@@ -307,7 +337,6 @@ public class ThrownJavelin extends AbstractArrow {
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
-		compound.put(TAG_ITEM, this.getItem().save(this.registryAccess()));
 		compound.putBoolean(TAG_HIT_TARGET, this.hitTarget);
 		if (target != null) {
 			compound.putUUID(TAG_TARGET, target.getUUID());

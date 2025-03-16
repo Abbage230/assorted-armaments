@@ -13,7 +13,7 @@ public class AACreativeModeTabs {
 
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ASSORTED_ARMAMENTS = TABS.register("assorted_armaments", () -> CreativeModeTab.builder()
 		.title(Component.translatable("name." + AssortedArmaments.ID))
-		.icon(() -> AAItems.DIAMOND_CLAYMORE.get().getDefaultInstance())
+		.icon(() -> AAItems.DIAMOND_FLAIL.get().getDefaultInstance())
 		.displayItems((params, output) -> BuiltInRegistries.ITEM.stream().filter(i -> BuiltInRegistries.ITEM.getKey(i).getNamespace().equals(AssortedArmaments.ID)).forEach(output::accept))
 		.build());
 }

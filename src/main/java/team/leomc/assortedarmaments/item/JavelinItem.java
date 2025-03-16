@@ -61,7 +61,6 @@ public class JavelinItem extends TieredItem {
 		if (!entity.level().isClientSide && entity instanceof Player player) {
 			int ticks = this.getUseDuration(stack, entity) - timeCharged;
 			ThrownJavelin javelin = new ThrownJavelin(level, player, stack);
-			javelin.setItem(stack);
 			javelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, Math.min(0.25F * ticks, 2.5F), 1.0F);
 			if (player.hasInfiniteMaterials()) {
 				javelin.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
