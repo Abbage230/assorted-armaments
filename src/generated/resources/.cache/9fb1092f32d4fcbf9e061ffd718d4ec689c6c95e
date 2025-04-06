@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-15T17:21:05.5876621	Recipes
+// 1.21.1	2025-04-06T19:21:58.0313866	Recipes
 2fcaf515a684f232e5b90d754e335b15ae9a1c30 data/assorted_armaments/advancement/recipes/combat/diamond_claymore.json
 8c101e35fb4f3b561340f0a6ea31eae1ed25b82e data/assorted_armaments/advancement/recipes/combat/diamond_flail.json
 a2d2021ea3d8c81914a385af477bf389e32d05c4 data/assorted_armaments/advancement/recipes/combat/diamond_javelin.json
@@ -43,6 +43,7 @@ b77fe14e707b09371607c3e2836def9d0e4f24d2 data/assorted_armaments/recipe/diamond_
 959d22d5297e32aefcdeefda44c8a7998d317c1e data/assorted_armaments/recipe/diamond_mace.json
 cea07ae489c8e030d86c7c735e21c3575db4acfd data/assorted_armaments/recipe/diamond_pike.json
 ef957b73caac3ab5c554f79375c6e59169dc677f data/assorted_armaments/recipe/diamond_rapier.json
+977a10626822f507232cedd6e172be5a2139e786 data/assorted_armaments/recipe/glacite_claymore.json
 3e097eb7933240d4090b99afafb550ac9a9b7fd5 data/assorted_armaments/recipe/golden_claymore.json
 99485d3a948f5fce14aa4017d88a7a4d37a014b9 data/assorted_armaments/recipe/golden_flail.json
 3c853a70066b1a68596a1d5ef570f598a59de85b data/assorted_armaments/recipe/golden_javelin.json
@@ -69,6 +70,8 @@ d8e2bbba48772a513e61d65c6348c00d9eaff318 data/assorted_armaments/recipe/stone_ja
 a9a907d3354f90e04bdc86e05d0fa0359700eb66 data/assorted_armaments/recipe/stone_mace.json
 237188c187fc407c9f20aa81d5074f5aae88911e data/assorted_armaments/recipe/stone_pike.json
 2a1740daf75c1805af6862ac01fd8d251b14e39b data/assorted_armaments/recipe/stone_rapier.json
+58f150b77639f5cf9834ac37d046bee796b81fd3 data/assorted_armaments/recipe/swamp_silver_claymore.json
+00c2dac63ca6a5037dc443cf232246e31d10ba93 data/assorted_armaments/recipe/thermal_springstone_claymore.json
 e9077c25852fc3e140f1cdf3649abfe7c05b0ed1 data/assorted_armaments/recipe/wooden_claymore.json
 7b0f6b5937b234b979718fdfc668d6c2dd006662 data/assorted_armaments/recipe/wooden_flail.json
 584a4b4ef3a10b09802ce6947ff7a4e73c50b7c5 data/assorted_armaments/recipe/wooden_javelin.json

@@ -10,6 +10,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.integration.eternal_starlight.EternalStarlightHelper;
 import team.leomc.assortedarmaments.registry.AAItems;
 
 public class AAItemModelProvider extends ItemModelProvider {
@@ -90,14 +91,20 @@ public class AAItemModelProvider extends ItemModelProvider {
 		rapier(AAItems.GOLDEN_RAPIER.get());
 		rapier(AAItems.DIAMOND_RAPIER.get());
 		rapier(AAItems.NETHERITE_RAPIER.get());
+
+		EternalStarlightHelper.registerModels(this);
+	}
+
+	public void claymore(ResourceLocation item) {
+		ModelFile blocking = withExistingParent(item.getPath() + "_blocking", AssortedArmaments.id("item/large_handheld_blocking"))
+			.texture("layer0", texture(item, ModelProvider.ITEM_FOLDER));
+		withExistingParent(item.getPath(), AssortedArmaments.id("item/large_handheld"))
+			.texture("layer0", texture(item, ModelProvider.ITEM_FOLDER))
+			.override().predicate(AssortedArmaments.id("blocking"), 1).model(blocking).end();
 	}
 
 	private void claymore(Item item) {
-		ModelFile blocking = withExistingParent(name(item) + "_blocking", AssortedArmaments.id("item/large_handheld_blocking"))
-			.texture("layer0", itemTexture(item));
-		withExistingParent(name(item), AssortedArmaments.id("item/large_handheld"))
-			.texture("layer0", itemTexture(item))
-			.override().predicate(AssortedArmaments.id("blocking"), 1).model(blocking).end();
+		claymore(key(item));
 	}
 
 	private void flail(Item item) {
@@ -149,9 +156,13 @@ public class AAItemModelProvider extends ItemModelProvider {
 	}
 
 	private ItemModelBuilder inventoryHandheld(Item item) {
-		return getBuilder(item.toString() + "_inventory")
+		return inventoryHandheld(key(item));
+	}
+
+	public ItemModelBuilder inventoryHandheld(ResourceLocation item) {
+		return getBuilder(item + "_inventory")
 			.parent(new ModelFile.UncheckedModelFile("item/handheld"))
-			.texture("layer0", itemTexture(item) + "_inventory");
+			.texture("layer0", texture(item, ModelProvider.ITEM_FOLDER) + "_inventory");
 	}
 
 	private void pike(Item item) {

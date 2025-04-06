@@ -1,18 +1,25 @@
 package team.leomc.assortedarmaments.data.gen.tags;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.integration.eternal_starlight.EternalStarlightHelper;
 import team.leomc.assortedarmaments.registry.AAItems;
 import team.leomc.assortedarmaments.tags.AAItemTags;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.concurrent.CompletableFuture;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class AAItemTagsProvider extends ItemTagsProvider {
 	public AAItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> future, CompletableFuture<TagLookup<Block>> provider, ExistingFileHelper helper) {
 		super(output, future, provider, AssortedArmaments.ID, helper);
@@ -134,5 +141,11 @@ public class AAItemTagsProvider extends ItemTagsProvider {
 			AAItems.GOLDEN_PIKE.get(),
 			AAItems.GOLDEN_RAPIER.get()
 		);
+		EternalStarlightHelper.addTags(this);
+	}
+
+	@Override
+	public IntrinsicTagAppender<Item> tag(TagKey<Item> tag) {
+		return super.tag(tag);
 	}
 }

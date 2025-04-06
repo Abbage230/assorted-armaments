@@ -5,6 +5,7 @@ import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.integration.eternal_starlight.EternalStarlightHelper;
 import team.leomc.assortedarmaments.item.*;
 
 public class AAItems {
@@ -17,6 +18,8 @@ public class AAItems {
 	public static final DeferredItem<ClaymoreItem> GOLDEN_CLAYMORE = ITEMS.register("golden_claymore", () -> new ClaymoreItem(Tiers.GOLD, new Item.Properties().attributes(ClaymoreItem.createAttributes(Tiers.GOLD, 5f, -2.9f, 0.5f))));
 	public static final DeferredItem<ClaymoreItem> DIAMOND_CLAYMORE = ITEMS.register("diamond_claymore", () -> new ClaymoreItem(Tiers.DIAMOND, new Item.Properties().attributes(ClaymoreItem.createAttributes(Tiers.DIAMOND, 5f, -2.9f, 0.5f))));
 	public static final DeferredItem<ClaymoreItem> NETHERITE_CLAYMORE = ITEMS.register("netherite_claymore", () -> new ClaymoreItem(Tiers.NETHERITE, new Item.Properties().attributes(ClaymoreItem.createAttributes(Tiers.NETHERITE, 5f, -2.9f, 0.5f))));
+
+	static {EternalStarlightHelper.registerClaymores(ITEMS);}
 
 	// maces
 	public static final DeferredItem<MaceItem> WOODEN_MACE = ITEMS.register("wooden_mace", () -> new MaceItem(Tiers.WOOD, new Item.Properties().attributes(MaceItem.createAttributes(Tiers.WOOD, 4.5f, -3f))));

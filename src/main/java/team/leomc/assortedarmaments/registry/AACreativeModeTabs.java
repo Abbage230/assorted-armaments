@@ -1,6 +1,5 @@
 package team.leomc.assortedarmaments.registry;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,6 +13,5 @@ public class AACreativeModeTabs {
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ASSORTED_ARMAMENTS = TABS.register("assorted_armaments", () -> CreativeModeTab.builder()
 		.title(Component.translatable("name." + AssortedArmaments.ID))
 		.icon(() -> AAItems.DIAMOND_FLAIL.get().getDefaultInstance())
-		.displayItems((params, output) -> BuiltInRegistries.ITEM.stream().filter(i -> BuiltInRegistries.ITEM.getKey(i).getNamespace().equals(AssortedArmaments.ID)).forEach(output::accept))
-		.build());
+		.displayItems((params, output) -> AAItems.ITEMS.getEntries().forEach(item -> output.accept(item.get()))).build());
 }

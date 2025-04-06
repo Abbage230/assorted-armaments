@@ -1,5 +1,6 @@
 package team.leomc.assortedarmaments.client.event;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
@@ -34,6 +35,7 @@ import org.lwjgl.glfw.GLFW;
 import team.leomc.assortedarmaments.AssortedArmaments;
 import team.leomc.assortedarmaments.client.renderer.entity.ThrownFlailRenderer;
 import team.leomc.assortedarmaments.client.renderer.entity.ThrownJavelinRenderer;
+import team.leomc.assortedarmaments.integration.eternal_starlight.EternalStarlightHelper;
 import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 import team.leomc.assortedarmaments.tags.AAItemTags;
@@ -46,100 +48,102 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 @EventBusSubscriber(modid = AssortedArmaments.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class AAClientSetupEvents {
-	public static final Map<ModelResourceLocation, Map<ItemDisplayContext, ModelResourceLocation>> ITEMS_WITH_SPECIAL_MODELS = new HashMap<>(Map.ofEntries(
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_claymore")), Map.of(
+	public static final Map<ModelResourceLocation, Map<ItemDisplayContext, ModelResourceLocation>> ITEMS_WITH_SPECIAL_MODELS = Util.make(new HashMap<>(), map -> {
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_claymore_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("stone_claymore")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("stone_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_claymore_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_claymore")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("iron_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_claymore_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_claymore")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("golden_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_claymore_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_claymore")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_claymore_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_claymore")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_claymore")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_claymore_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_flail")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_flail"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("stone_flail")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("stone_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_flail"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_flail")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("iron_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_flail"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_flail")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("golden_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_flail"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_flail")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_flail"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_flail")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_flail")), Map.of(
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_flail"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_pike")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("wooden_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_pike_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("stone_pike")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("stone_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_pike_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("iron_pike")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("iron_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_pike_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("golden_pike")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("golden_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_pike_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_pike")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("diamond_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_pike_inventory"))
-		)),
-		Map.entry(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_pike")), Map.of(
+		));
+		map.put(ModelResourceLocation.inventory(AssortedArmaments.id("netherite_pike")), Map.of(
 			ItemDisplayContext.HEAD, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
 			ItemDisplayContext.GUI, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
 			ItemDisplayContext.GROUND, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory")),
 			ItemDisplayContext.FIXED, ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_pike_inventory"))
-		))
-	));
+		));
 
-	public static final List<ModelResourceLocation> ADDITIONAL_MODELS = new ArrayList<>(List.of(
+		EternalStarlightHelper.registerAdditionalModel(map);
+	});
+
+	public static final List<ModelResourceLocation> ADDITIONAL_MODELS = Lists.newArrayList(
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/wooden_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/stone_flail_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/iron_flail_thrown")),
@@ -152,7 +156,7 @@ public class AAClientSetupEvents {
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/golden_javelin_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/diamond_javelin_thrown")),
 		ModelResourceLocation.standalone(AssortedArmaments.id("item/netherite_javelin_thrown"))
-	));
+	);
 
 	public static final Map<ModelResourceLocation, BakedModel> BAKED_MODELS = new HashMap<>();
 
