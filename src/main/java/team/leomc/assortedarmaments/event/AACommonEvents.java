@@ -24,15 +24,19 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import team.leomc.assortedarmaments.AACommonConfig;
 import team.leomc.assortedarmaments.AssortedArmaments;
 import team.leomc.assortedarmaments.entity.ConcentratedAttacker;
+import team.leomc.assortedarmaments.integration.MaterialsComponent;
 import team.leomc.assortedarmaments.network.UpdateBlockAbilityPayload;
 import team.leomc.assortedarmaments.tags.AAEntityTypeTags;
 import team.leomc.assortedarmaments.tags.AAItemTags;
@@ -46,7 +50,7 @@ public class AACommonEvents {
 
 	@SubscribeEvent
 	private static void onJoinLevel(EntityJoinLevelEvent event) {
-		if (event.getEntity() instanceof LivingEntity living) {
+		if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity living) {
 			Level level = event.getLevel();
 			RandomSource random = level.getRandom();
 			DifficultyInstance difficulty = level.getCurrentDifficultyAt(living.blockPosition());
@@ -87,6 +91,7 @@ public class AACommonEvents {
 			if (living.isUsingItem() && living.getUseItem().is(AAItemTags.FLAILS)) {
 				event.setAmount(event.getAmount() * 0.1f * Math.min((living.getTicksUsingItem() / 20f), 5));
 			}
+			MaterialsComponent.applyMaterials(living.getWeaponItem(), material -> material.onIncomingDamage(event));
 		}
 	}
 
@@ -160,5 +165,21 @@ public class AACommonEvents {
 				event.getToolTip().add(Component.translatable("desc." + AssortedArmaments.ID + ".shift").withStyle(ChatFormatting.BLUE));
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public static void onItemAttributeModifier(ItemAttributeModifierEvent event) {
+		MaterialsComponent.applyMaterials(event.getItemStack(), material -> material.onItemAttributeModifier(event));
+	}
+
+	@SubscribeEvent
+	public static void onMobEffectApplicable(MobEffectEvent.Applicable event) {
+		MaterialsComponent.applyMaterials(event.getEntity().getWeaponItem(), material -> material.onMobEffectApplicable(event));
+	}
+
+	@SubscribeEvent
+	public static void onEntityInvulnerabilityCheck(EntityInvulnerabilityCheckEvent event) {
+		if (!(event.getEntity() instanceof LivingEntity living)) return;
+		MaterialsComponent.applyMaterials(living.getWeaponItem(), material -> material.onEntityInvulnerabilityCheck(event));
 	}
 }

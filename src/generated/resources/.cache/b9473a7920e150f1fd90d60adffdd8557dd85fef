@@ -1,7 +1,7 @@
-// 1.21.1	2025-03-15T17:38:20.6399388	Tags for minecraft:item mod id assorted_armaments
+// 1.21.1	2025-04-06T18:04:34.81659	Tags for minecraft:item mod id assorted_armaments
 8ba001d97407331ee14c585782e5005a21400ff6 data/assorted_armaments/tags/item/armor_based_damage.json
 689ac2b139dda363b2d21522077b54904bd7a2a4 data/assorted_armaments/tags/item/can_block.json
-3ead32a8a1628c8e9e1f00dca30ab1c862b280b8 data/assorted_armaments/tags/item/claymores.json
+6f3bb7062379ab614933d75d912a61f999a5c625 data/assorted_armaments/tags/item/claymores.json
 7afce92566460028195e030448653863cf8cdad4 data/assorted_armaments/tags/item/disabled_when_disabling_blocking.json
 8ba001d97407331ee14c585782e5005a21400ff6 data/assorted_armaments/tags/item/disables_blocking_on_attack.json
 8ba001d97407331ee14c585782e5005a21400ff6 data/assorted_armaments/tags/item/extra_knockback.json

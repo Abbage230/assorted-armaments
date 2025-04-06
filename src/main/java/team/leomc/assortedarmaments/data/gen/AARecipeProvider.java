@@ -1,8 +1,12 @@
 package team.leomc.assortedarmaments.data.gen;
 
+import com.google.gson.JsonObject;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -11,11 +15,18 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 import team.leomc.assortedarmaments.AssortedArmaments;
+import team.leomc.assortedarmaments.integration.eternal_starlight.EternalStarlightHelper;
 import team.leomc.assortedarmaments.registry.AAItems;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class AARecipeProvider extends RecipeProvider {
+	private final Map<ResourceLocation, JsonObject> jsons = new HashMap<>();
+
 	public AARecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
 		super(output, registries);
 	}
@@ -94,6 +105,8 @@ public class AARecipeProvider extends RecipeProvider {
 			.unlockedBy("has_iron_pike", has(AAItems.IRON_PIKE.get()))
 			.unlockedBy("has_iron_rapier", has(AAItems.IRON_RAPIER.get()))
 			.save(recipeOutput, AssortedArmaments.id(getSmeltingRecipeName(Items.IRON_NUGGET)));
+
+		EternalStarlightHelper.buildRecipes(jsons);
 	}
 
 	protected static void netheriteSmithing(RecipeOutput recipeOutput, Item ingredientItem, RecipeCategory category, Item resultItem) {
@@ -164,5 +177,13 @@ public class AARecipeProvider extends RecipeProvider {
 			.pattern("## ")
 			.unlockedBy("has_item", has(input))
 			.save(recipeOutput);
+	}
+
+	@Override
+	protected CompletableFuture<?> run(CachedOutput output, HolderLookup.Provider registries) {
+		List<CompletableFuture<?>> futures = new ArrayList<>();
+		futures.add(super.run(output, registries));
+		jsons.forEach((id, obj) -> futures.add(DataProvider.saveStable(output, obj, recipePathProvider.json(id))));
+		return CompletableFuture.allOf(futures.toArray(CompletableFuture<?>[]::new));
 	}
 }

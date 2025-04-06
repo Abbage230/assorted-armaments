@@ -5,6 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import team.leomc.assortedarmaments.AssortedArmaments;
 import team.leomc.assortedarmaments.client.event.AAClientSetupEvents;
+import team.leomc.assortedarmaments.integration.eternal_starlight.EternalStarlightHelper;
 import team.leomc.assortedarmaments.registry.AAEntityTypes;
 import team.leomc.assortedarmaments.registry.AAItems;
 
@@ -88,5 +89,7 @@ public class AAChineseLanguageProvider extends LanguageProvider {
 		add(AAItems.GOLDEN_RAPIER.get(), "金刺剑");
 		add(AAItems.DIAMOND_RAPIER.get(), "钻石刺剑");
 		add(AAItems.NETHERITE_RAPIER.get(), "下界合金刺剑");
+
+		EternalStarlightHelper.addTranslations(this, false);
 	}
 }
