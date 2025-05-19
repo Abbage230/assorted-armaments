@@ -62,7 +62,7 @@
     "item.assorted_armaments.wooden_mace": "木のメイス",
     "item.assorted_armaments.wooden_pike": "木のパイク",
     "item.assorted_armaments.wooden_rapier": "木のレイピア",
-    "key.assorted_armaments.remove_javelin": "ジャベリンが回収される",
+    "key.assorted_armaments.remove_javelin": "ジャベリンを回収する",
     "key.categories.assorted_armaments": "Assorted Armaments",
     "name.assorted_armaments": "Assorted Armaments"
   }
